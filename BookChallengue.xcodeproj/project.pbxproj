@@ -13,6 +13,9 @@
 		ACCCD7E1279C8199007F4379 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCCD7DF279C8199007F4379 /* Main.storyboard */; };
 		ACCCD7E3279C819B007F4379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACCCD7E2279C819B007F4379 /* Assets.xcassets */; };
 		ACCCD7E6279C819B007F4379 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCCD7E4279C819B007F4379 /* LaunchScreen.storyboard */; };
+		ACCCD7F2279C85E4007F4379 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD7F1279C85E4007F4379 /* utils.swift */; };
+		ACECC250279CE71B007F16C2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */; };
+		ACECC252279CE766007F16C2 /* headerImageSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC251279CE766007F16C2 /* headerImageSetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		ACCCD7E2279C819B007F4379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACCCD7E5279C819B007F4379 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACCCD7E7279C819B007F4379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACCCD7F1279C85E4007F4379 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		ACECC251279CE766007F16C2 /* headerImageSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerImageSetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		ACCCD7D8279C8199007F4379 /* BookChallengue */ = {
 			isa = PBXGroup;
 			children = (
+				ACCCD7F7279C88D6007F4379 /* Controller */,
+				ACCCD7F6279C88D1007F4379 /* View */,
+				ACCCD7F4279C88C0007F4379 /* Model */,
+				ACCCD7F3279C85F0007F4379 /* Utilities */,
 				ACCCD7D9279C8199007F4379 /* AppDelegate.swift */,
 				ACCCD7DB279C8199007F4379 /* SceneDelegate.swift */,
-				ACCCD7DD279C8199007F4379 /* ViewController.swift */,
 				ACCCD7DF279C8199007F4379 /* Main.storyboard */,
 				ACCCD7E2279C819B007F4379 /* Assets.xcassets */,
 				ACCCD7E4279C819B007F4379 /* LaunchScreen.storyboard */,
 				ACCCD7E7279C819B007F4379 /* Info.plist */,
 			);
 			path = BookChallengue;
+			sourceTree = "<group>";
+		};
+		ACCCD7F3279C85F0007F4379 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCD7F1279C85E4007F4379 /* utils.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		ACCCD7F4279C88C0007F4379 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACECC251279CE766007F16C2 /* headerImageSetter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACCCD7F6279C88D1007F4379 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCD7DD279C8199007F4379 /* ViewController.swift */,
+				ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACCCD7F7279C88D6007F4379 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACECC250279CE71B007F16C2 /* RegisterViewController.swift in Sources */,
 				ACCCD7DE279C8199007F4379 /* ViewController.swift in Sources */,
+				ACECC252279CE766007F16C2 /* headerImageSetter.swift in Sources */,
 				ACCCD7DA279C8199007F4379 /* AppDelegate.swift in Sources */,
 				ACCCD7DC279C8199007F4379 /* SceneDelegate.swift in Sources */,
+				ACCCD7F2279C85E4007F4379 /* utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +350,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -334,7 +378,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
