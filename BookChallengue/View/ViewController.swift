@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         emailTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "emailimage")
         view.addSubview(emailTextFieldImage!)
         emailTextFieldImage?.addAnchors(left: width/14, top: 30, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
-
+        
         emailTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "example@gmail.com",isSecure: false)
         view.addSubview(emailTextField!)
         emailTextField?.addAnchors(left: width/3, top: 53, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         passwordTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "passwordimage")
         view.addSubview(passwordTextFieldImage!)
         passwordTextFieldImage?.addAnchors(left: width/14, top: 5, right: width/14, bottom: nil, withAnchor: .top, relativeToView: emailTextFieldImage)
-
+        
         passwordTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "Password",isSecure: true)
         view.addSubview(passwordTextField!)
         passwordTextField?.addAnchors(left: width/3, top: 28, right: width/14, bottom: nil, withAnchor: .top, relativeToView: emailTextFieldImage)
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         registerButton?.addAnchors(left: 1, top: nil, right: nil, bottom: nil, withAnchor: .left, relativeToView: registerLabel)
         
         registerButton?.addTarget(self, action: #selector(RegisterField), for: .touchUpInside)
-
+        
         logInbutton?.addTarget(self, action: #selector(logInAction), for: .touchUpInside)
         
     }
@@ -111,11 +111,11 @@ extension ViewController: UITextFieldDelegate {
         emailTextField!.endEditing(true)
         return true
     }
-     
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-
         
-        }
+        
+    }
     
     @objc func RegisterField(){
         
@@ -126,25 +126,25 @@ extension ViewController: UITextFieldDelegate {
     
     @objc func logInAction(){
         usuarioDB =  userController.getDbArray()
-
+        
         let inputUser = emailTextField?.text
         let inputPassword = passwordTextField?.text
         let usuarioDB = userController.getDbArray()
         let libraryVc = LibraryViewController()
         libraryVc.modalPresentationStyle = .fullScreen
         
-//        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
-//        let fetchedDbUser = usuarioDB[index]
-//            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
-//                userController.currentUserSetter(currentuser: index)
-                present(libraryVc, animated: true, completion: nil)
-//            }}else{
-//             let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
-//                self.present(alert, animated: true, completion: nil)
-
-//        }
+        //        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
+        //        let fetchedDbUser = usuarioDB[index]
+        //            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
+        //                userController.currentUserSetter(currentuser: index)
+        present(libraryVc, animated: true, completion: nil)
+        //            }}else{
+        //             let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
+        //                self.present(alert, animated: true, completion: nil)
+        
+        //        }
     }
-            
+    
 }
 
 

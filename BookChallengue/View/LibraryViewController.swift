@@ -26,7 +26,7 @@ class LibraryViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
-
+        
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(LibraryCollectionCell.self, forCellWithReuseIdentifier: "cell")
         collection.isPagingEnabled = true
@@ -35,15 +35,15 @@ class LibraryViewController: UIViewController {
         collection.showsHorizontalScrollIndicator = true
         return collection
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-         currentUser = userController.currentUserGetter()
+        currentUser = userController.currentUserGetter()
         dataSource = LibraryDB()
         uiInit()
         
         view.backgroundColor = .white
-       
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -80,21 +80,21 @@ class LibraryViewController: UIViewController {
         backLabel?.addAnchors(left: nil, top: -33, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backLabel?.addAnchors(left: -7, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
         backLabel?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-    
+        
         morePopular = headerInit.uiLabelSetter(labelString: ("Most Popular"), labelSize: 20, textaligment: .center, isBold: true, isHighLighted: false)
         view.addSubview(morePopular!)
         morePopular?.addAnchors(left: width/4, top:45, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
-    //MARK: CollectionView Carrousell
+        //MARK: CollectionView Carrousell
         LibraryCollectionView.delegate = self
         LibraryCollectionView.dataSource = self
         view.addSubview(LibraryCollectionView)
-
+        //        LibraryCollectionView.scrollToItem(at:IndexPath(item: 4, section: 1), at: .right, animated: true)
         LibraryCollectionView.addAnchorsAndSize(width: (width/4)*3, height: (height/4)*1, left: 0, top: 10, right: 0, bottom: nil, withAnchor: .top, relativeToView: morePopular)
-        LibraryCollectionView.scrollToItem(at:IndexPath(item: 4, section: 1), at: .right, animated: true)
-
-
         
-    //MARK: STACKVIEW
+        
+        
+        
+        //MARK: STACKVIEW
         
         stackb1 = headerInit.uiButtonSetter(uiButtonNmae: "Libro", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb1?.addTarget(self, action: #selector(stackb1Action), for: .touchUpInside)
@@ -125,7 +125,7 @@ class LibraryViewController: UIViewController {
         separator2.heightAnchor.constraint(equalTo: stackView!.heightAnchor, multiplier: 0.6).isActive = true
         
         stackView?.addArrangedSubview(stackb3!)
-
+        
         
         view.addSubview(stackView!)
         stackView?.addAnchors(left: 20, top: 10, right: 20, bottom: nil, withAnchor: .top, relativeToView: LibraryCollectionView)
@@ -148,7 +148,7 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.libreria?.allLibro?[section].libro?.count ?? 0
     }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let libro = dataSource?.libreria?.allLibro?[indexPath.section].libro?[indexPath.row]
@@ -170,8 +170,8 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- 
-      let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+        
+        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
         let vc = BookViewController()
         vc.libro = libro
         vc.modalPresentationStyle = .fullScreen
@@ -179,7 +179,7 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     
-
+    
     
     // Collection View Config
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -196,17 +196,17 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = LibraryCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LibraryCollectionCell
         
         let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.item]
-
-
-       cell.setData(libro: libro!)
+        
+        
+        cell.setData(libro: libro!)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width: width / 2 - 40, height: height / 4)
-      //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
+        //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
     }
     
     //objc functions
@@ -224,7 +224,7 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     @objc  func dismissView(){
         dismiss(animated: true, completion: nil)
     }
-     
-}
     
-   
+}
+
+

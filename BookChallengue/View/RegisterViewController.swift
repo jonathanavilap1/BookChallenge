@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var userController = userDB()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         uiInit()
@@ -53,8 +53,8 @@ class RegisterViewController: UIViewController {
         backLabel?.addAnchors(left: nil, top: -33, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backLabel?.addAnchors(left: -7, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
         backLabel?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-  
-       
+        
+        
         //MARK: DescriptionLabel
         descriptionLabel = headerInit.uiLabelSetter(labelString: "You are few steps away of the best expirence of your life ", labelSize: 15, textaligment: .center, isBold: false,isHighLighted: false)
         descriptionLabel?.numberOfLines = 0
@@ -68,12 +68,12 @@ class RegisterViewController: UIViewController {
         
         
         // MARK: form Buttons
-
+        
         //user textfield
         userTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "emailimage")
         formView?.addSubview(userTextFieldImage!)
         userTextFieldImage?.addAnchors(left: width/14, top: 30, right: width/14, bottom: nil)
-
+        
         userTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "Jonathan Avila",isSecure: false)
         formView?.addSubview(userTextField!)
         userTextField?.addAnchors(left: 110, top: 53, right: width/14, bottom: nil)
@@ -83,7 +83,7 @@ class RegisterViewController: UIViewController {
         emailTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "userimage")
         formView?.addSubview(emailTextFieldImage!)
         emailTextFieldImage?.addAnchors(left: width/14, top: 20, right: width/14, bottom: nil, withAnchor: .top, relativeToView: userTextFieldImage)
-
+        
         emailTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "example@gmail.com",isSecure: false)
         formView?.addSubview(emailTextField!)
         emailTextField?.addAnchors(left: 110, top: 43, right: width/14, bottom: nil, withAnchor: .top, relativeToView: userTextFieldImage)
@@ -93,22 +93,22 @@ class RegisterViewController: UIViewController {
         passwordTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "passwordimage")
         formView?.addSubview(passwordTextFieldImage!)
         passwordTextFieldImage?.addAnchors(left: width/14, top: 20, right: width/14, bottom: nil, withAnchor: .top, relativeToView: emailTextFieldImage)
-
+        
         passwordTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "Password",isSecure: true)
         formView?.addSubview(passwordTextField!)
         passwordTextField?.addAnchors(left: 110, top: 43, right: width/14, bottom: nil, withAnchor: .top, relativeToView: emailTextFieldImage)
         passwordTextField!.delegate = self
         
-          //ConfirmPassword
+        //ConfirmPassword
         passwordTextFieldImage2 = headerInit.uiImageViewSetter(uiImageName: "passwordimage")
         formView?.addSubview(passwordTextFieldImage2!)
         passwordTextFieldImage2?.addAnchors(left: width/14, top: 20, right: width/14, bottom: nil, withAnchor: .top, relativeToView: passwordTextFieldImage)
-
+        
         passwordTextField2 = headerInit.textFieldSetter(isClear: true, placeHolderString: "Confirm Password",isSecure: true)
         formView?.addSubview(passwordTextField2!)
         passwordTextField2?.addAnchors(left: 110, top: 43, right: width/14, bottom: nil, withAnchor: .top, relativeToView: passwordTextFieldImage)
         passwordTextField2!.delegate = self
-    
+        
         
         singInButton = headerInit.uiButtonSetter(uiButtonNmae: "Crear Cuenta", textAligments: .center, cornerRadius: 15, isBackgroundClear: false, isUnderlined: false)
         view.addSubview(singInButton!)
@@ -116,8 +116,8 @@ class RegisterViewController: UIViewController {
         singInButton?.addTarget(self, action: #selector(Registration), for: .touchUpInside)
     }
     
-
-
+    
+    
     
     
 }
@@ -153,13 +153,13 @@ extension RegisterViewController: UITextFieldDelegate {
         }else{
             let registrationUser = nuevoUsuario(email: (emailTextField?.text)!, usuario: (userTextField?.text!)!, password: (passwordTextField?.text!)!)
             userController.addNewUser(usuarioInfo: registrationUser)
-    
+            
             
             let alert = headerInit.alertViewSetter(tittle: "Registration completed", message: "Thank you for joining", buttontittle: "")
             
             alert.addAction(UIAlertAction(title: "Go back and login", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) in
                 self.dismissView()})
-                )
+            )
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -169,7 +169,7 @@ extension RegisterViewController: UITextFieldDelegate {
 
 extension String {
     func isValidEmail() -> Bool {
-
+        
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }

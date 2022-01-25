@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 var headerInit = initializerUI()
 class LibraryCollectionCell : UICollectionViewCell{
-
+    
     var imageProduct : UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .clear

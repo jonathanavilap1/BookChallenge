@@ -13,14 +13,14 @@ struct initializerUI{
     var uiView: UIView?
     let viewBackGroundColor = UIColor(displayP3Red: 89/255, green: 194/255, blue: 230/255, alpha: 1)
     var alert: UIAlertController?
-
+    
     
     
     //MARK: creation of images
     mutating func uiImageViewSetter ( uiImageName: String) -> UIImageView{
         uiImage = UIImageView()
         uiImage?.image = UIImage(named: uiImageName)
-
+        
         return uiImage!
     }
     
@@ -45,7 +45,7 @@ struct initializerUI{
     
     //MARK: creation of placeHolders
     mutating func textFieldSetter( isClear: Bool, placeHolderString: String, isSecure: Bool) -> UITextField {
-
+        
         stringPlaceHolder = UITextField()
         stringPlaceHolder?.textColor = textColor
         if isClear != true {
@@ -70,7 +70,7 @@ struct initializerUI{
         
         uiButton = UIButton()
         uiButton?.backgroundColor = backgroundButtoncolor
-
+        
         if isBackgroundClear == true {
             uiButton?.backgroundColor = .clear
             uiButton?.setTitleColor(textColor, for: .normal)
@@ -105,9 +105,9 @@ struct initializerUI{
     //MARK: Alert creation
     
     func alertViewSetter(tittle: String, message: String, buttontittle: String?) -> UIAlertController{
-
+        
         let alert = UIAlertController(title: tittle, message: message, preferredStyle: UIAlertController.Style.alert)
-
+        
         alert.addAction(UIAlertAction(title: buttontittle, style: UIAlertAction.Style.default, handler: nil))
         
         return alert
@@ -132,7 +132,7 @@ struct initializerUI{
         return stackView
     }
     
-   
+    
     
     
 }

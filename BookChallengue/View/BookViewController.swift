@@ -22,16 +22,16 @@ class BookViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
-      }()
+    }()
     var contentView: UIView = {
         let contentView = UIView()
-
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
-      }()
-
+    }()
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +61,7 @@ class BookViewController: UIViewController {
         backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -30, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backButton?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         //MARK: CurrentUserLabel
-       
+        
         
         
         //MARK: back text button
@@ -83,7 +83,7 @@ class BookViewController: UIViewController {
         
         imageLibro = headerInit.uiImageViewSetter(uiImageName: (libro?.image)!)
         imageLibro?.layer.cornerRadius = 10
-      //  imageProduct?.contentMode = .scaleAspectFit
+        //  imageProduct?.contentMode = .scaleAspectFit
         imageLibro?.layer.masksToBounds = true
         viewBook?.addSubview(imageLibro!)
         imageLibro?.addAnchorsAndSize(width: width/4, height: nil, left: 20, top: 0, right: nil, bottom: 10)
@@ -91,26 +91,26 @@ class BookViewController: UIViewController {
         let tituloLabel = headerInit.uiLabelSetter(labelString: "Tittle", labelSize: 15, textaligment: .center, isBold: true, isHighLighted: true)
         viewBook1?.addSubview(tituloLabel)
         tituloLabel.addAnchors(left: 5, top: 5, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
-
+        
         tituloLibro = headerInit.uiLabelSetter(labelString: (libro?.titulo)!, labelSize: 13, textaligment: .center, isBold: false, isHighLighted: false)
         tituloLibro?.numberOfLines = 0
         viewBook1?.addSubview(tituloLibro!)
-
+        
         tituloLibro?.addAnchors(left: 10, top: nil, right: 55, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         tituloLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLabel)
-
+        
         let byAutor = headerInit.uiLabelSetter(labelString: "by Autor", labelSize: 12, textaligment: .center, isBold: true, isHighLighted: true)
         viewBook1?.addSubview(byAutor)
         byAutor.addAnchors(left: 5, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         byAutor.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLibro)
-
+        
         autorLibro = headerInit.uiLabelSetter(labelString: (libro?.autor)!, labelSize: 11, textaligment: .center, isBold: false, isHighLighted: false)
         autorLibro?.numberOfLines = 0
         viewBook1?.addSubview(autorLibro!)
-
+        
         autorLibro?.addAnchors(left: 10, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         autorLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: byAutor)
-
+        
         
         viewBook2 = headerInit.uiViewSetter()
         contentView.addSubview(viewBook2!)
@@ -134,7 +134,7 @@ class BookViewController: UIViewController {
         stackView.addArrangedSubview(separator1)
         separator1.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.7).isActive = true
         stackView.addArrangedSubview(stackb2)
-     
+        
         viewBook2!.addSubview(stackView)
         stackView.addAnchors(left: 20, top: 10, right: 20, bottom: nil)
         
@@ -154,7 +154,7 @@ class BookViewController: UIViewController {
         let aboutAutor = headerInit.uiLabelSetter(labelString: "About the Autor", labelSize: 13, textaligment: .left, isBold: true, isHighLighted: true)
         viewBook3!.addSubview(aboutAutor)
         aboutAutor.addAnchors(left: 20, top: 30, right: nil, bottom: nil, withAnchor: .left, relativeToView: autorimage)
-    
+        
         let autorName = headerInit.uiLabelSetter(labelString: (libro?.autor)!, labelSize: 20, textaligment: .left, isBold: false, isHighLighted: false)
         viewBook3!.addSubview(autorName)
         autorName.addAnchors(left: nil, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: aboutAutor)
@@ -172,7 +172,7 @@ class BookViewController: UIViewController {
 extension BookViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
+        
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -186,7 +186,7 @@ extension BookViewController: UITextFieldDelegate {
     @objc  func stackb1Action(){
         
         labelwithtext?.text = "Description text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-       
+        
     }
     
     @objc  func stackb2Action(){
@@ -197,27 +197,27 @@ extension BookViewController: UITextFieldDelegate {
     
     func setupScrollView(){
         NSLayoutConstraint.activate([
-           scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-           scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
-           scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-           scrollView.leftAnchor.constraint(equalTo: view.leftAnchor)
-         ])
-
-         NSLayoutConstraint.activate([
-           contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-           contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-           contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-           contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-           contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-         ])
-
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor)
+        ])
         
-
-         
-        }
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        ])
+        
+        
+        
+        
+    }
     
     
     
 }
-    
-   
+
+

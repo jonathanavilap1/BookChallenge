@@ -47,12 +47,12 @@ class LibraryDB{
         let math = setNewcategorias(categoria: "Math", libro:[libroMat1,libroMat2,libroMat3,libroMat4,libroMat5])
         
         let allBooks = allcategorias(libro:  [libroBio1,libroBio2,libroBio3,libroBio4,libroBio5,libroFisic1,libroFisic2,libroFisic3,libroFisic4,libroFisic5,libroMat1,libroMat2,libroMat3,libroMat4,libroMat5])
-
+        
         
         libreria = setLibreria(categorias: [biology,fisic,math], allLibro: [allBooks])
-    
+        
     }
-
+    
     
     //
     //
@@ -63,7 +63,7 @@ class LibraryDB{
     //
     //[Titulo: "3D Printed Microfluidic Devices", Autor: "Savas Tasoglu", Categoria: "Tecnologia", Imagen: "21"],[Titulo: "Exploring the Internet: A Technical Travelogue", Autor: "Carl Malamud", Categoria: "Tecnologia", Imagen: "22"],[Titulo: "Learning in Virtual Worlds", Autor: "Terry Anderson ", Categoria: "Tecnologia", Imagen: "23"],[Titulo: "The Web as History", Autor: "Niels Brugger", Categoria: "Tecnologia", Imagen: "24"],[Titulo: "From Bricks to Brains", Autor: "Michael R.W Dawson", Categoria: "Tecnologia", Imagen: "25"],
     //}
-
+    
 }
 
 
