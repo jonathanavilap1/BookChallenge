@@ -14,9 +14,8 @@ class CategoriasCell : UITableViewCell{
     var tituloLibro : UILabel?
     var autorLibro : UILabel?
     var categoriaLibro : UILabel?
-    
     var addButton : UIButton?
-    var imageProduct : UIImageView?
+    var imageLibro : UIImageView?
     
     var libro : setNewLibro?
     
@@ -35,16 +34,41 @@ class CategoriasCell : UITableViewCell{
     func initUI(){
         
         ownContent = UIView(frame: CGRect(x: 0, y: 5, width: width - 20, height: height/5 - 10))
-        ownContent?.backgroundColor = .blue
-        ownContent?.layer.cornerRadius = 10
+        ownContent?.backgroundColor = .white
+        ownContent?.layer.borderColor = headerInit.backgroundButtoncolor.cgColor
+        ownContent?.layer.cornerRadius = 15
         self.addSubview(ownContent!)
         
         
-        tituloLibro = UILabel(frame: CGRect(x: 5, y: 5, width: width/2, height: 20))
-        tituloLibro?.text = libro?.titulo
-        tituloLibro?.textAlignment = .left
-        tituloLibro?.font = .boldSystemFont(ofSize: 18)
+        imageLibro = headerInit.uiImageViewSetter(uiImageName: (libro?.image)!)
+        imageLibro?.layer.cornerRadius = 10
+      //  imageProduct?.contentMode = .scaleAspectFit
+        imageLibro?.layer.masksToBounds = true
+        ownContent?.addSubview(imageLibro!)
+        imageLibro?.addAnchorsAndSize(width: width/4, height: nil, left: 5, top: 5, right: nil, bottom: 5)
+        
+        let tituloLabel = headerInit.uiLabelSetter(labelString: "Titulo", labelSize: 18, textaligment: .center, isBold: true, isHighLighted: true)
+        ownContent?.addSubview(tituloLabel)
+        tituloLabel.addAnchors(left: 5, top: 10, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+        
+        tituloLibro = headerInit.uiLabelSetter(labelString: (libro?.titulo)!, labelSize: 15, textaligment: .center, isBold: false, isHighLighted: false)
+        tituloLibro?.numberOfLines = 0
         ownContent?.addSubview(tituloLibro!)
+        
+        tituloLibro?.addAnchors(left: 10, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+        tituloLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLabel)
+        
+        let byAutor = headerInit.uiLabelSetter(labelString: "by Autor", labelSize: 10, textaligment: .center, isBold: true, isHighLighted: true)
+        ownContent?.addSubview(byAutor)
+        tituloLabel.addAnchors(left: 5, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+        tituloLabel.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLibro)
+        
+        autorLibro = headerInit.uiLabelSetter(labelString: (libro?.autor)!, labelSize: 10, textaligment: .center, isBold: false, isHighLighted: false)
+        tituloLibro?.numberOfLines = 0
+        ownContent?.addSubview(tituloLibro!)
+        
+//        tituloLibro?.addAnchors(left: 10, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+//        tituloLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLabel)
         
         
         
@@ -60,14 +84,7 @@ class CategoriasCell : UITableViewCell{
         
         
         
-        imageProduct = UIImageView(frame: CGRect(x: width / 2, y: 10, width: width / 2 - 30, height: height/5 - 30))
-        imageProduct?.image = UIImage(named: libro?.image ?? "")
-        imageProduct?.layer.cornerRadius = 10
-        imageProduct?.backgroundColor = .red
-      //  imageProduct?.contentMode = .scaleAspectFit
-        imageProduct?.layer.masksToBounds = true
-        
-        ownContent?.addSubview(imageProduct!)
+
 
         
         

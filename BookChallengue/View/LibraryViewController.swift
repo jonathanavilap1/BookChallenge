@@ -128,34 +128,54 @@ class LibraryViewController: UIViewController {
         stackView?.addAnchors(left: 20, top: 10, right: 20, bottom: nil, withAnchor: .top, relativeToView: LibraryCollectionView)
         
         tableView = UITableView()
-        tableView?.backgroundColor = .gray
+        tableView?.backgroundColor = .clear
         tableView?.delegate = self
         tableView?.dataSource = self
         
         view.addSubview(tableView!)
+        tableView?.addAnchorsAndSize(width: nil, height: nil, left: 20, top: 20, right: 20, bottom: 20, withAnchor: .top, relativeToView: stackView)
         
     }
 }
 
-extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITableViewDataSource{
+extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITableViewDataSource,UITableViewDelegate{
+    
+    // tableview config
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.libreria?.categorias?[section].libro?.count ?? 0
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let product = dataSource?.libreria?.categorias?[indexPath.?[indexPath.row]
-        let cell = MenuTableViewCell(producto: product!)
+        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+        let cell = CategoriasCell(libro: libro!)
         return cell
     }
     
-
-    
-    
-    @objc  func dismissView(){
-        dismiss(animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return height / 5
+    }
+    // tablewviewdelegate
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
+        view.addSubview(header)
+        header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
+        return view
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+        let vc = BookViewController()
+//        vc.product = libro
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
+
+    
+    // Collection View Config
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         indexSection = dataSource?.libreria?.categorias?[section].libro?.count
         
@@ -183,6 +203,7 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
       //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
     }
     
+    //objc functions
     @objc func stackb1Action (){
         print("me toco boton1")
     }
@@ -193,6 +214,9 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     @objc func stackb3Action (){
         print("me toco boton3")
+    }
+    @objc  func dismissView(){
+        dismiss(animated: true, completion: nil)
     }
      
 }
