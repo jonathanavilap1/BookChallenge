@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var registerButton: UIButton?
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
+    var userController = userDB()
 
     
     
@@ -38,38 +39,38 @@ class ViewController: UIViewController {
     
     func uiInit(){
         
-        headerImage = headerInit.uiImageViewSetter("headerimage")
+        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage2")
         view.addSubview(headerImage!)
-        headerImage?.addAnchorsAndSize(width: width, height: height/5, left: 0, top: 32, right: 0, bottom: nil)
+        headerImage?.addAnchorsAndSize(width: width, height: height/8, left: -20, top: 32, right: 0, bottom: nil)
         
         
         // MARK: Logo
-        appIcon = headerInit.uiImageViewSetter("logo")
+        appIcon = headerInit.uiImageViewSetter(uiImageName: "logo")
         view.addSubview(appIcon!)
-        appIcon?.addAnchorsAndSize(width: width/4, height: width/4, left: width/3, top: -30, right: width/3, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        appIcon?.addAnchorsAndSize(width: width/4, height: width/4, left: width/3, top: -10, right: width/3, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         
         // MARK: WelcomeLabel
         
-        welcomeLabel = headerInit.uiLabelSetter("Welcome", 30, .center,true, isHighLighted: false)
+        welcomeLabel = headerInit.uiLabelSetter(labelString: "Welcome", labelSize: 30, textaligment: .center,isBold: true, isHighLighted: false)
         view.addSubview(welcomeLabel!)
         welcomeLabel?.addAnchors(left: width/4, top: 20, right: width/4, bottom: nil, withAnchor: .top, relativeToView: appIcon)
         
         // MARK: Email Buttons
-        emailTextFieldImage = headerInit.uiImageViewSetter("emailimage")
+        emailTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "emailimage")
         view.addSubview(emailTextFieldImage!)
         emailTextFieldImage?.addAnchors(left: width/14, top: 30, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
 
-        emailTextField = headerInit.placeHolderString("example@gmail.com",false)
+        emailTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "example@gmail.com",isSecure: false)
         view.addSubview(emailTextField!)
         emailTextField?.addAnchors(left: width/3, top: 53, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
         emailTextField!.delegate = self
         
         // MARK: password Buttons
-        passwordTextFieldImage = headerInit.uiImageViewSetter("passwordimage")
+        passwordTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "passwordimage")
         view.addSubview(passwordTextFieldImage!)
         passwordTextFieldImage?.addAnchors(left: width/14, top: 5, right: width/14, bottom: nil, withAnchor: .top, relativeToView: emailTextFieldImage)
 
-        passwordTextField = headerInit.placeHolderString("Password",true)
+        passwordTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "Password",isSecure: true)
         view.addSubview(passwordTextField!)
         passwordTextField?.addAnchors(left: width/3, top: 28, right: width/14, bottom: nil, withAnchor: .top, relativeToView: emailTextFieldImage)
         passwordTextField!.delegate = self
@@ -81,7 +82,7 @@ class ViewController: UIViewController {
         logInbutton?.addAnchorsAndSize(width: nil, height: height/16, left: width/14, top: 70, right: width/14, bottom: nil, withAnchor: .top, relativeToView: passwordTextField)
         
         //MARK: underbutton text
-        registerLabel = headerInit.uiLabelSetter("Doesnt have an account?", 17, .left,false, isHighLighted: false)
+        registerLabel = headerInit.uiLabelSetter(labelString: "Doesnt have an account?", labelSize: 17, textaligment: .left,isBold: false, isHighLighted: false)
         view.addSubview(registerLabel!)
         registerLabel?.addAnchorsAndSize(width: width/3, height: height/20,left: width/10, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: logInbutton)
         
@@ -93,7 +94,7 @@ class ViewController: UIViewController {
         
         registerButton?.addTarget(self, action: #selector(RegisterField), for: .touchUpInside)
 
-        
+        logInbutton?.addTarget(self, action: #selector(logInAction), for: .touchUpInside)
         
     }
     
@@ -122,6 +123,18 @@ extension ViewController: UITextFieldDelegate {
         present(registerVC, animated: true, completion: nil)
     }
     
+    @objc func logInAction(){
+        let inputUser = emailTextField?.text
+        let inputPassword = passwordTextField?.text
+//        let user
+            
+            
+            
+            
+     
+        
+        
+    }
     
 }
 

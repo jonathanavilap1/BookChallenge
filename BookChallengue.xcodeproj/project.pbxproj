@@ -16,6 +16,9 @@
 		ACCCD7F2279C85E4007F4379 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD7F1279C85E4007F4379 /* utils.swift */; };
 		ACECC250279CE71B007F16C2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */; };
 		ACECC252279CE766007F16C2 /* headerImageSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC251279CE766007F16C2 /* headerImageSetter.swift */; };
+		ACECC256279F3A99007F16C2 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC255279F3A99007F16C2 /* UsersModel.swift */; };
+		ACECC258279F3AAC007F16C2 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC257279F3AAC007F16C2 /* Books.swift */; };
+		ACECC25A279F4EB1007F16C2 /* userDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC259279F4EB0007F16C2 /* userDataBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		ACCCD7F1279C85E4007F4379 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ACECC251279CE766007F16C2 /* headerImageSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerImageSetter.swift; sourceTree = "<group>"; };
+		ACECC255279F3A99007F16C2 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		ACECC257279F3AAC007F16C2 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
+		ACECC259279F4EB0007F16C2 /* userDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDataBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		ACCCD7F3279C85F0007F4379 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ACECC251279CE766007F16C2 /* headerImageSetter.swift */,
 				ACCCD7F1279C85E4007F4379 /* utils.swift */,
 			);
 			path = Utilities;
@@ -87,7 +94,8 @@
 		ACCCD7F4279C88C0007F4379 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ACECC251279CE766007F16C2 /* headerImageSetter.swift */,
+				ACECC255279F3A99007F16C2 /* UsersModel.swift */,
+				ACECC257279F3AAC007F16C2 /* Books.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +112,7 @@
 		ACCCD7F7279C88D6007F4379 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ACECC259279F4EB0007F16C2 /* userDataBase.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,8 +192,11 @@
 				ACCCD7DE279C8199007F4379 /* ViewController.swift in Sources */,
 				ACECC252279CE766007F16C2 /* headerImageSetter.swift in Sources */,
 				ACCCD7DA279C8199007F4379 /* AppDelegate.swift in Sources */,
+				ACECC258279F3AAC007F16C2 /* Books.swift in Sources */,
 				ACCCD7DC279C8199007F4379 /* SceneDelegate.swift in Sources */,
+				ACECC25A279F4EB1007F16C2 /* userDataBase.swift in Sources */,
 				ACCCD7F2279C85E4007F4379 /* utils.swift in Sources */,
+				ACECC256279F3A99007F16C2 /* UsersModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

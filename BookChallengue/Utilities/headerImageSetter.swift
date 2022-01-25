@@ -10,10 +10,14 @@ struct initializerUI{
     var uiImage: UIImageView?
     var uiLabel: UILabel?
     var uiButton: UIButton?
+    var uiView: UIView?
+    let viewBackGroundColor = UIColor(displayP3Red: 89/255, green: 194/255, blue: 230/255, alpha: 1)
+    var alert: UIAlertController?
+
     
     
     //MARK: creation of images
-    mutating func uiImageViewSetter (_ uiImageName: String) -> UIImageView{
+    mutating func uiImageViewSetter ( uiImageName: String) -> UIImageView{
         uiImage = UIImageView()
         uiImage?.image = UIImage(named: uiImageName)
 
@@ -21,7 +25,7 @@ struct initializerUI{
     }
     
     //MARK: creation of labels
-    mutating func uiLabelSetter (_ labelString: String,_ labelSize: CGFloat, _ textaligment: NSTextAlignment, _ isBold: Bool, isHighLighted: Bool) -> UILabel{
+    mutating func uiLabelSetter ( labelString: String, labelSize: CGFloat,  textaligment: NSTextAlignment,  isBold: Bool, isHighLighted: Bool) -> UILabel{
         uiLabel = UILabel()
         uiLabel?.font = UIFont(name: "HelveticaNeue", size: labelSize)
         if isBold == true {
@@ -39,13 +43,20 @@ struct initializerUI{
     }
     
     //MARK: creation of placeHolders
-    mutating func placeHolderString(_ placeHolderString: String,_ isSecure: Bool) -> UITextField {
+    mutating func textFieldSetter( isClear: Bool, placeHolderString: String, isSecure: Bool) -> UITextField {
+
         stringPlaceHolder = UITextField()
+        stringPlaceHolder?.textColor = textColor
+        if isClear != true {
+            stringPlaceHolder?.backgroundColor = .white
+            stringPlaceHolder?.layer.borderWidth = 1
+            stringPlaceHolder?.layer.borderColor = textColor.cgColor
+        }
+        
         if isSecure == true{
             stringPlaceHolder?.isSecureTextEntry = true
-        }else{
-            stringPlaceHolder?.isSecureTextEntry = false
         }
+        
         stringPlaceHolder?.attributedPlaceholder = NSAttributedString(string: placeHolderString ,
                                                                       attributes: [NSAttributedString.Key.foregroundColor: placeHolderColor])
         return stringPlaceHolder!
@@ -69,6 +80,7 @@ struct initializerUI{
                                                             attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
             
         }
+        
         uiButton?.setTitle(uiButtonNmae, for: .normal)
         uiButton?.titleLabel?.textAlignment = textAligments
         uiButton?.layer.cornerRadius = cornerRadius
@@ -78,12 +90,28 @@ struct initializerUI{
     }
     
     
-    //MARK: creation of underline property
-    func UnderLineString(_ underLineString: String) -> NSAttributedString {
-        let underLine = NSAttributedString(string: underLineString ,
-                                           attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
-        return underLine
+    //MARK: creation of block/view
+    
+    mutating func uiViewSetter() -> UIView {
+        uiView = UIView()
+        uiView?.layer.cornerRadius = 20
+        uiView?.backgroundColor = .white
+        uiView?.layer.borderWidth = 2
+        uiView?.layer.borderColor = backgroundButtoncolor.cgColor
+        return uiView!
     }
+    
+    //MARK: Alert creation
+    
+    func alertViewSetter(tittle: String, message: String, buttontittle: String?) -> UIAlertController{
+
+        let alert = UIAlertController(title: tittle, message: message, preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: buttontittle, style: UIAlertAction.Style.default, handler: nil))
+        
+        return alert
+    }
+    
     
 }
 
