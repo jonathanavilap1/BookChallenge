@@ -209,6 +209,14 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
         //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+        let vc = BookViewController()
+        vc.libro = libro
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
     //objc functions
     @objc func stackb1Action (){
         print("me toco 3")
