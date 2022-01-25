@@ -20,6 +20,10 @@
 		ACECC258279F3AAC007F16C2 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC257279F3AAC007F16C2 /* Books.swift */; };
 		ACECC25A279F4EB1007F16C2 /* userDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC259279F4EB0007F16C2 /* userDataBase.swift */; };
 		ACECC2C3279F86EF007F16C2 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2C2279F86EE007F16C2 /* LibraryViewController.swift */; };
+		ACECC2CA279FAD49007F16C2 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2C9279FAD49007F16C2 /* BookViewController.swift */; };
+		ACECC2CD27A0513D007F16C2 /* LibraryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */; };
+		ACECC2CF27A0522B007F16C2 /* libraryDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2CE27A0522A007F16C2 /* libraryDataBase.swift */; };
+		ACECC2D127A081D5007F16C2 /* CategoriasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		ACECC257279F3AAC007F16C2 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		ACECC259279F4EB0007F16C2 /* userDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDataBase.swift; sourceTree = "<group>"; };
 		ACECC2C2279F86EE007F16C2 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		ACECC2C9279FAD49007F16C2 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionCell.swift; sourceTree = "<group>"; };
+		ACECC2CE27A0522A007F16C2 /* libraryDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = libraryDataBase.swift; sourceTree = "<group>"; };
+		ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriasCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +104,6 @@
 		ACCCD7F4279C88C0007F4379 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ACECC2C4279F8C44007F16C2 /* inventory */,
 				ACECC255279F3A99007F16C2 /* UsersModel.swift */,
 				ACECC257279F3AAC007F16C2 /* Books.swift */,
 			);
@@ -106,9 +113,11 @@
 		ACCCD7F6279C88D1007F4379 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ACECC2CB27A05103007F16C2 /* SubViewa */,
 				ACCCD7DD279C8199007F4379 /* ViewController.swift */,
 				ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */,
 				ACECC2C2279F86EE007F16C2 /* LibraryViewController.swift */,
+				ACECC2C9279FAD49007F16C2 /* BookViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,15 +126,18 @@
 			isa = PBXGroup;
 			children = (
 				ACECC259279F4EB0007F16C2 /* userDataBase.swift */,
+				ACECC2CE27A0522A007F16C2 /* libraryDataBase.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		ACECC2C4279F8C44007F16C2 /* inventory */ = {
+		ACECC2CB27A05103007F16C2 /* SubViewa */ = {
 			isa = PBXGroup;
 			children = (
+				ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */,
+				ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */,
 			);
-			path = inventory;
+			path = SubViewa;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +212,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACECC250279CE71B007F16C2 /* RegisterViewController.swift in Sources */,
+				ACECC2D127A081D5007F16C2 /* CategoriasCell.swift in Sources */,
 				ACCCD7DE279C8199007F4379 /* ViewController.swift in Sources */,
 				ACECC252279CE766007F16C2 /* headerImageSetter.swift in Sources */,
+				ACECC2CF27A0522B007F16C2 /* libraryDataBase.swift in Sources */,
+				ACECC2CD27A0513D007F16C2 /* LibraryCollectionCell.swift in Sources */,
+				ACECC2CA279FAD49007F16C2 /* BookViewController.swift in Sources */,
 				ACCCD7DA279C8199007F4379 /* AppDelegate.swift in Sources */,
 				ACECC258279F3AAC007F16C2 /* Books.swift in Sources */,
 				ACCCD7DC279C8199007F4379 /* SceneDelegate.swift in Sources */,

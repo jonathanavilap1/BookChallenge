@@ -113,6 +113,27 @@ struct initializerUI{
         return alert
     }
     
+    func stackViewSetter() ->UIStackView{
+        let stackView = UIStackView()
+        stackView.axis  = NSLayoutConstraint.Axis.horizontal
+        stackView.distribution  = UIStackView.Distribution.equalSpacing
+        stackView.alignment = UIStackView.Alignment.center
+        stackView.spacing   = 16.0
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        stackView.layer.cornerRadius = 10
+        stackView.layer.borderColor = headerInit.backgroundButtoncolor.cgColor
+        stackView.backgroundColor = headerInit.backgroundButtoncolor
+        
+        
+        
+        return stackView
+    }
+    
+   
+    
     
 }
 
