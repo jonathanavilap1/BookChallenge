@@ -23,12 +23,13 @@ class ViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var userController = userDB()
-
+    var usuarioDB: [nuevoUsuario] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         uiInit()
         // Do any additional setup after loading the view.
     }
@@ -124,17 +125,26 @@ extension ViewController: UITextFieldDelegate {
     }
     
     @objc func logInAction(){
+        usuarioDB =  userController.getDbArray()
+
         let inputUser = emailTextField?.text
         let inputPassword = passwordTextField?.text
-//        let user
-            
-            
-            
-            
-     
+        let usuarioDB = userController.getDbArray()
+        let libraryVc = LibraryViewController()
+        libraryVc.modalPresentationStyle = .fullScreen
         
-        
+//        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
+//        let fetchedDbUser = usuarioDB[index]
+//            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
+//                userController.currentUserSetter(currentuser: index)
+                present(libraryVc, animated: true, completion: nil)
+//            }}else{
+//             let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
+//                self.present(alert, animated: true, completion: nil)
+
+//        }
     }
-    
+            
 }
+
 

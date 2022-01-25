@@ -33,6 +33,7 @@ struct initializerUI{
         }
         if isHighLighted == true {
             uiLabel?.highlightedTextColor = textColorHighligthed
+            uiLabel?.isHighlighted = true
         }
         
         uiLabel?.text = labelString

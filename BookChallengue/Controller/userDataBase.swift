@@ -6,22 +6,43 @@
 //
 
 import Foundation
+var usuarioDB: [nuevoUsuario] = []
+var currentUserIndex: Int? =  nil
+var currentUserObj: nuevoUsuario?
+
 
 class userDB {
-    
-var usuarioDB: [nuevoUsuario] = []
 
-let adminUser = nuevoUsuario(email: "admin@gmail.com", usuario: "admin", password: "admin")
+    init(){
+        let Jonathan = nuevoUsuario(email: "Jon", usuario: "Jonathan", password: "Jon")
+        let adminUser = nuevoUsuario(email: "Admin", usuario: "admin", password: "admin")
+        usuarioDB.append(Jonathan)
+        usuarioDB.append(adminUser)
+    }
+
+
     
     
 func addNewUser(usuarioInfo: nuevoUsuario){
-    usuarioDB.append(adminUser)
     print(usuarioDB.isEmpty)
     usuarioDB.append(usuarioInfo)
     
     print((usuarioDB.last?.usuario)!)
 }
     
+func getDbArray() -> [nuevoUsuario]{
+        
+        return usuarioDB
+    }
+    
+func currentUserSetter(currentuser: Int){
+        
+        currentUserIndex = currentuser
+    }
+func currentUserGetter() -> nuevoUsuario{
+    currentUserObj =  usuarioDB[currentUserIndex ?? 0]
+return currentUserObj!
+        }
 }
 
 
