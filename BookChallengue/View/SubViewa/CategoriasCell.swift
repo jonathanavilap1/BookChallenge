@@ -47,7 +47,7 @@ class CategoriasCell : UITableViewCell{
         ownContent?.addSubview(imageLibro!)
         imageLibro?.addAnchorsAndSize(width: width/4, height: nil, left: 5, top: 5, right: nil, bottom: 5)
         
-        let tituloLabel = headerInit.uiLabelSetter(labelString: "Titulo", labelSize: 18, textaligment: .center, isBold: true, isHighLighted: true)
+        let tituloLabel = headerInit.uiLabelSetter(labelString: "Tittle", labelSize: 18, textaligment: .center, isBold: true, isHighLighted: true)
         ownContent?.addSubview(tituloLabel)
         tituloLabel.addAnchors(left: 5, top: 10, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         
@@ -55,37 +55,24 @@ class CategoriasCell : UITableViewCell{
         tituloLibro?.numberOfLines = 0
         ownContent?.addSubview(tituloLibro!)
         
-        tituloLibro?.addAnchors(left: 10, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+        tituloLibro?.addAnchors(left: 10, top: nil, right: 55, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         tituloLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLabel)
         
-        let byAutor = headerInit.uiLabelSetter(labelString: "by Autor", labelSize: 10, textaligment: .center, isBold: true, isHighLighted: true)
+        let byAutor = headerInit.uiLabelSetter(labelString: "by Autor", labelSize: 14, textaligment: .center, isBold: true, isHighLighted: true)
         ownContent?.addSubview(byAutor)
-        tituloLabel.addAnchors(left: 5, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
-        tituloLabel.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLibro)
+        byAutor.addAnchors(left: 5, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+        byAutor.addAnchors(left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLibro)
         
-        autorLibro = headerInit.uiLabelSetter(labelString: (libro?.autor)!, labelSize: 10, textaligment: .center, isBold: false, isHighLighted: false)
-        tituloLibro?.numberOfLines = 0
-        ownContent?.addSubview(tituloLibro!)
+        autorLibro = headerInit.uiLabelSetter(labelString: (libro?.autor)!, labelSize: 14, textaligment: .center, isBold: false, isHighLighted: false)
+        autorLibro?.numberOfLines = 0
+        ownContent?.addSubview(autorLibro!)
         
-//        tituloLibro?.addAnchors(left: 10, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
-//        tituloLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLabel)
-        
-        
-        
-        addButton = UIButton(frame: CGRect(x: 10, y: (height/5 - 10) - 45, width: 90, height: 35))
-        addButton?.backgroundColor = .white
-        addButton?.setTitle("Agregar", for: .normal)
-        addButton?.setTitleColor(.orange, for: .normal) // Modificamos el color del titulo del boton
-        addButton?.layer.borderColor = UIColor.orange.cgColor
-        addButton?.layer.borderWidth = 1 // Aqui definimos el ancho del borde
-        addButton?.layer.cornerRadius = 10
-        
-        ownContent?.addSubview(addButton!)
-        
-        
-        
+        autorLibro?.addAnchors(left: 10, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
+        autorLibro?.addAnchors(left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: byAutor)
 
-
+        let more = headerInit.uiImageViewSetter(uiImageName: "more")
+        ownContent?.addSubview(more)
+        more.addAnchorsAndSize(width: 50, height: 50, left: 200, top: 50, right: nil, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         
         
     }

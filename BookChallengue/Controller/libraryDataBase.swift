@@ -45,9 +45,11 @@ class LibraryDB{
         let biology = setNewcategorias(categoria: "Biologia", libro:[libroBio1,libroBio2,libroBio3,libroBio4,libroBio5])
         let fisic = setNewcategorias(categoria: "Fisica", libro:[libroFisic1,libroFisic2,libroFisic3,libroFisic4,libroFisic5])
         let math = setNewcategorias(categoria: "Math", libro:[libroMat1,libroMat2,libroMat3,libroMat4,libroMat5])
+        
+        let allBooks = allcategorias(libro:  [libroBio1,libroBio2,libroBio3,libroBio4,libroBio5,libroFisic1,libroFisic2,libroFisic3,libroFisic4,libroFisic5,libroMat1,libroMat2,libroMat3,libroMat4,libroMat5])
 
         
-        libreria = setLibreria(categorias: [biology,fisic,math])
+        libreria = setLibreria(categorias: [biology,fisic,math], allLibro: [allBooks])
     
     }
 

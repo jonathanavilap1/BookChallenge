@@ -51,6 +51,7 @@ class LibraryViewController: UIViewController {
     }
     
     func uiInit(){
+        
         //MARK: Header
         headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage2")
         view.addSubview(headerImage!)
@@ -87,9 +88,11 @@ class LibraryViewController: UIViewController {
         LibraryCollectionView.delegate = self
         LibraryCollectionView.dataSource = self
         view.addSubview(LibraryCollectionView)
+
         LibraryCollectionView.addAnchorsAndSize(width: (width/4)*3, height: (height/4)*1, left: 0, top: 10, right: 0, bottom: nil, withAnchor: .top, relativeToView: morePopular)
-        LibraryCollectionView.scrollToItem(at:IndexPath(item: indexSection ?? 0, section: 0), at: .right, animated: false)
-        LibraryCollectionView.reloadData()
+        LibraryCollectionView.scrollToItem(at:IndexPath(item: 4, section: 1), at: .right, animated: true)
+
+
         
     //MARK: STACKVIEW
         
@@ -127,6 +130,7 @@ class LibraryViewController: UIViewController {
         view.addSubview(stackView!)
         stackView?.addAnchors(left: 20, top: 10, right: 20, bottom: nil, withAnchor: .top, relativeToView: LibraryCollectionView)
         
+        // tableView
         tableView = UITableView()
         tableView?.backgroundColor = .clear
         tableView?.delegate = self
@@ -142,12 +146,12 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     // tableview config
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.libreria?.categorias?[section].libro?.count ?? 0
+        return dataSource?.libreria?.allLibro?[section].libro?.count ?? 0
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+        let libro = dataSource?.libreria?.allLibro?[indexPath.section].libro?[indexPath.row]
         let cell = CategoriasCell(libro: libro!)
         return cell
     }
@@ -159,15 +163,17 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
+        header.backgroundColor = .white
         view.addSubview(header)
         header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
         return view
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+ 
+      let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
         let vc = BookViewController()
-//        vc.product = libro
+        vc.libro = libro
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
@@ -205,7 +211,7 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     //objc functions
     @objc func stackb1Action (){
-        print("me toco boton1")
+        print("me toco 3")
     }
     
     @objc func stackb2Action (){

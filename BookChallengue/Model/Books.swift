@@ -10,18 +10,32 @@ import Foundation
 class setLibreria {
 
     var categorias: [setNewcategorias]?
- 
-    init(categorias: [setNewcategorias]){
+    var allLibro: [allcategorias]?
+    init(categorias: [setNewcategorias], allLibro: [allcategorias]){
         self.categorias = categorias
+        self.allLibro = allLibro
     }
 }
 
 class setNewcategorias{
     var categoria: String?
+    
     var libro: [setNewLibro]?
+
     
     init (categoria: String, libro: [setNewLibro]){
         self.categoria = categoria
+        self.libro = libro
+      
+    }
+}
+
+class allcategorias{
+    var libro: [setNewLibro]?
+
+    
+    init ( libro: [setNewLibro]){
+
         self.libro = libro
     }
 }
