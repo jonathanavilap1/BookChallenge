@@ -21,6 +21,7 @@ class LibraryViewController: UIViewController {
     var stackView: UIStackView?
     var indexSection:Int?
     var tableView : UITableView?
+    var bookApi = BookManager()
     var LibraryCollectionView : UICollectionView
     = {
         let layout = UICollectionViewFlowLayout()
@@ -41,7 +42,7 @@ class LibraryViewController: UIViewController {
         currentUser = userController.currentUserGetter()
         dataSource = LibraryDB()
         uiInit()
-        
+       bookApi.delegate = self
         view.backgroundColor = .white
         
     }
@@ -142,7 +143,7 @@ class LibraryViewController: UIViewController {
     }
 }
 
-extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITableViewDataSource,UITableViewDelegate{
+extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
     
     // tableview config
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -177,62 +178,76 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
-    
-    
-    
-    
-    // Collection View Config
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        indexSection = dataSource?.libreria?.categorias?[section].libro?.count
-        
-        return dataSource?.libreria?.categorias?[section].libro?.count ?? 0
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return (dataSource?.libreria?.categorias?.count)!
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = LibraryCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LibraryCollectionCell
-        
-        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.item]
-        
-        
-        cell.setData(libro: libro!)
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: width / 2 - 40, height: height / 4)
-        //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
-        let vc = BookViewController()
-        vc.libro = libro
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
-    
-    //objc functions
-    @objc func stackb1Action (){
-        print("me toco 3")
-    }
-    
-    @objc func stackb2Action (){
-        print("me toco boton2")
-    }
-    
-    @objc func stackb3Action (){
-        print("me toco boton3")
-    }
-    @objc  func dismissView(){
-        dismiss(animated: true, completion: nil)
-    }
+   
     
 }
 
 
+extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+   // Collection View Config
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       indexSection = dataSource?.libreria?.categorias?[section].libro?.count
+       
+       return dataSource?.libreria?.categorias?[section].libro?.count ?? 0
+   }
+   
+   func numberOfSections(in collectionView: UICollectionView) -> Int {
+       return (dataSource?.libreria?.categorias?.count)!
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       let cell = LibraryCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LibraryCollectionCell
+       
+       let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.item]
+       
+       
+       cell.setData(libro: libro!)
+       
+       return cell
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+       
+       return CGSize(width: width / 2 - 40, height: height / 4)
+       //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+       let vc = BookViewController()
+       vc.libro = libro
+       vc.modalPresentationStyle = .fullScreen
+       present(vc, animated: true, completion: nil)
+   }
+   
+   
+}
+
+
+extension LibraryViewController: BookManagerDelegate{
+   func didFailWithError(error: Error) {
+      print(error)
+   }
+   
+   func didUpdateBook(_ bookManager: BookManager, bookModel: BookModel) {
+//      DispatchQueue.main.sync {
+//         printContent(bookManager)
+//      }
+   }
+   
+   //objc functions
+   @objc func stackb1Action (){
+         bookApi.fetchApi()
+   }
+   
+   @objc func stackb2Action (){
+       print("me toco boton2")
+   }
+   
+   @objc func stackb3Action (){
+       print("me toco boton3")
+   }
+   @objc  func dismissView(){
+       dismiss(animated: true, completion: nil)
+   }
+}
