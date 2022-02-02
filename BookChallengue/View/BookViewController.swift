@@ -18,19 +18,6 @@ class BookViewController: UIViewController {
     var tituloLibro: UILabel?
     var autorLibro: UILabel?
     var labelwithtext: UILabel?
-    var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-    var contentView: UIView = {
-        let contentView = UIView()
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        return contentView
-    }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +32,16 @@ class BookViewController: UIViewController {
     }
     
     func uiInit(){
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        setupScrollView()
         
         //MARK: Header
         headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage2")
-        contentView.addSubview(headerImage!)
+        view.addSubview(headerImage!)
         headerImage?.addAnchorsAndSize(width: width, height: height/8, left: 0, top: 31, right: 0, bottom: height/0.2)
         
         //MARK: BackButton
         backButton = UIButton()
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
-        contentView.addSubview(backButton!)
+        view.addSubview(backButton!)
         backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -30, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backButton?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         //MARK: CurrentUserLabel
@@ -66,13 +50,13 @@ class BookViewController: UIViewController {
         
         //MARK: back text button
         backLabel = headerInit.uiButtonSetter(uiButtonNmae: "Back", textAligments: .left, cornerRadius: 0, isBackgroundClear: true, isUnderlined: false)
-        contentView.addSubview(backLabel!)
+       view.addSubview(backLabel!)
         backLabel?.addAnchors(left: nil, top: -33, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backLabel?.addAnchors(left: -7, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
         backLabel?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         viewBook = headerInit.uiViewSetter()
-        contentView.addSubview(viewBook!)
+       view.addSubview(viewBook!)
         viewBook?.backgroundColor = .clear
         viewBook?.layer.borderWidth = 0
         viewBook?.addAnchorsAndSize(width: nil, height: (height/6)+20, left: 20, top: 150, right: 20, bottom: nil)
@@ -113,7 +97,7 @@ class BookViewController: UIViewController {
         
         
         viewBook2 = headerInit.uiViewSetter()
-        contentView.addSubview(viewBook2!)
+       view.addSubview(viewBook2!)
         viewBook2?.addAnchorsAndSize(width: nil, height: (height/6)+100, left: 20, top: 30, right: 20, bottom: nil,withAnchor: .top,relativeToView: viewBook)
         //stackView
         let stackb1 = headerInit.uiButtonSetter(uiButtonNmae: "Libro", textAligments: .right, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
@@ -145,7 +129,7 @@ class BookViewController: UIViewController {
         labelwithtext!.addAnchors(left: 15, top: 0, right: 15, bottom: 5, withAnchor: .top, relativeToView: stackView)
         
         viewBook3 = headerInit.uiViewSetter()
-        contentView.addSubview(viewBook3!)
+       view.addSubview(viewBook3!)
         viewBook3?.addAnchorsAndSize(width: nil, height: (height/6)+100, left: 20, top: 30, right: 20, bottom: nil,withAnchor: .top,relativeToView: viewBook2)
         let autorimage = headerInit.uiImageViewSetter(uiImageName: "login")
         viewBook3?.addSubview(autorimage)
@@ -194,30 +178,9 @@ extension BookViewController: UITextFieldDelegate {
         labelwithtext?.text = "Detalles text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         
     }
-    
-    func setupScrollView(){
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-        ])
-        
         
         
         
     }
-    
-    
-    
-}
 
 

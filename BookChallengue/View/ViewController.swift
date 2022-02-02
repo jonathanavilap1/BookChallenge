@@ -133,16 +133,16 @@ extension ViewController: UITextFieldDelegate {
         let libraryVc = LibraryViewController()
         libraryVc.modalPresentationStyle = .fullScreen
         
-        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
-            let fetchedDbUser = usuarioDB[index]
-            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
-                userController.currentUserSetter(currentuser: index)
+//        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
+//            let fetchedDbUser = usuarioDB[index]
+//            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
+//                userController.currentUserSetter(currentuser: index)
                 present(libraryVc, animated: true, completion: nil)
-            }}else{
-                let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
-                self.present(alert, animated: true, completion: nil)
-                
-            }
+//            }}else{
+//                let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
+//                self.present(alert, animated: true, completion: nil)
+//
+//            }
     }
     
 }
