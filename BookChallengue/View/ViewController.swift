@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     var headerInit = initializerUI()
     var headerImage: UIImageView?
@@ -23,7 +23,9 @@ class ViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var bookApi = BookManager()
+    var hpApi = HPManager()
     var bookModelfetch: BookArray?
+    var hpModelFetch: HpModel?
     var userController = userDB()
     var usuarioDB: [nuevoUsuario] = []
     
@@ -32,6 +34,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         bookApi.delegate = self
+       hpApi.delegatehp = self
+       hpApi.fetchApiHP()
        bookApi.fetchApi()
         uiInit()
         // Do any additional setup after loading the view.
@@ -62,11 +66,11 @@ class ViewController: UIViewController {
         // MARK: Email Buttons
         emailTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "emailimage")
         view.addSubview(emailTextFieldImage!)
-        emailTextFieldImage?.addAnchors(left: width/14, top: 30, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
+        emailTextFieldImage?.addAnchors(left: width/14, top: 100, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
         
         emailTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "example@gmail.com",isSecure: false)
         view.addSubview(emailTextField!)
-        emailTextField?.addAnchors(left: width/3, top: 53, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
+        emailTextField?.addAnchors(left: width/3, top: 123, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
         emailTextField!.delegate = self
         
         // MARK: password Buttons
@@ -131,6 +135,8 @@ extension ViewController: UITextFieldDelegate {
 }
 
 extension ViewController: BookManagerDelegate{
+
+   
    @objc func logInAction(){
        usuarioDB =  userController.getDbArray()
        
@@ -166,8 +172,22 @@ extension ViewController: BookManagerDelegate{
       }
       
    }
+
+}
+
+extension ViewController:HPManagerDelegate{
    
+   func didFailWithErrorHP(error: Error) {
+      print(error)
+   }
    
+   func didUpdateHP(_ bookManager: HPManager, hpModel: HpModel) {
+//      DispatchQueue.main.sync {
+//        
+//         hpModelFetch = hpModel
+//      
+//      }
+   }
    
 }
 

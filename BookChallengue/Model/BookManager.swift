@@ -9,9 +9,11 @@ import Foundation
 protocol BookManagerDelegate{
    func didFailWithError(error: Error)
    func didUpdateBook(_ bookManager: BookManager, bookModel: BookArray)
+ 
 }
 
 struct BookManager{
+
    let urlBooks = "https://www.googleapis.com/books/v1/volumes?q=HarryPotter&key=AIzaSyA4deYcEJce0HvvE9t09WfMTERNHO_NPak&startIndex=0&maxResults=10&printType=books"
    let defaultImageUrl = "https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg"
    var bookModel: BookModel?

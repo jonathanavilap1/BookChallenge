@@ -95,15 +95,15 @@ class LibraryViewController: UIViewController {
         
         //MARK: STACKVIEW
         
-        stackb1 = headerInit.uiButtonSetter(uiButtonNmae: "Libro", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
+        stackb1 = headerInit.uiButtonSetter(uiButtonNmae: "Libros", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb1?.addTarget(self, action: #selector(stackb1Action), for: .touchUpInside)
         stackb1?.setTitleColor(.white, for: .normal)
         
-        stackb2 = headerInit.uiButtonSetter(uiButtonNmae: "Categorias", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
+        stackb2 = headerInit.uiButtonSetter(uiButtonNmae: "Characters", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb2?.addTarget(self, action: #selector(stackb2Action), for: .touchUpInside)
         stackb2?.setTitleColor(.white, for: .normal)
         
-        stackb3 = headerInit.uiButtonSetter(uiButtonNmae: "Autores", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
+        stackb3 = headerInit.uiButtonSetter(uiButtonNmae: "Houses", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb3?.addTarget(self, action: #selector(stackb3Action), for: .touchUpInside)
         stackb3?.setTitleColor(.white, for: .normal)
         stackView = headerInit.stackViewSetter()
