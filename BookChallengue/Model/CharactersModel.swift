@@ -8,13 +8,17 @@
 import Foundation
 
 // MARK: - HPELEMENT
+struct characterArray{
+   var chArray: [HpModel]
+}
+
 struct HpModel {
-    let name: String
-    let gender: String
-    let house: String
-    let wizard: Bool
-    let patronus: String
-    let actor: String
-    let alive: Bool
-    let image: String
+    let name: String?
+    let gender: String?
+    let house: String?
+    let wizard: Bool?
+    let patronus: String?
+    let actor: String?
+    let alive: Bool?
+//    let image: Data?
 }

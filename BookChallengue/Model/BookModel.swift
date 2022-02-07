@@ -17,7 +17,7 @@ struct BookModel{
    let description: String?
    let pageCount: Int?
    let categories: [String]?
-   let averageRating, ratingsCount: Int?
+   let averageRating, ratingsCount: Double?
    let previewLink, infoLink: String?
    let smallThumbnail: String?
    let thumbnail: String?

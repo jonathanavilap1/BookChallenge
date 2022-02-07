@@ -54,7 +54,7 @@ struct VolumeInfo: Codable {
     let description: String?
     let pageCount: Int?
     let categories: [String]?
-    let averageRating, ratingsCount: Int?
+    let averageRating, ratingsCount: Double?
     let imageLinks: ImageLinks?
     let previewLink, infoLink: String?
 }

@@ -8,19 +8,19 @@
 import Foundation
 protocol HPManagerDelegate{
    func didFailWithErrorHP(error: Error)
-   func didUpdateHP(_ bookManager: HPManager, hpModel: HpModel)
+   func didUpdateHP(_ hpManager: HPManager, hpModel: characterArray)
 }
 
 struct HPManager{
 
-   let urlBooks = "http://hp-api.herokuapp.com/api/characters"
-   let defaultImageUrl = "https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg"
+   
    var  hpModel: HpModel?
    var delegatehp:HPManagerDelegate?
-
-   
+   var urlApi = "http://hp-api.herokuapp.com/api/characters"
+   var urlApiHouses = "http://hp-api.herokuapp.com/api/characters"
+   let defaultImageUrl = "https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg"
     func fetchApiHP(){
-       perfomRequestHP(urlString: urlBooks)
+       perfomRequestHP(urlString: urlApi)
    }
    
    func perfomRequestHP(urlString: String){
@@ -31,10 +31,10 @@ struct HPManager{
                self.delegatehp?.didFailWithErrorHP(error: error!)
                return }
             if let safedata = data{
-//               if let dataSecure = self.parseJsonHP(hpData: safedata) {
-//                  self.delegate?.didUpdateHP(self, hpModel: dataSecure)
-                  print(safedata)
-//               }
+               if let dataSecure = self.parseJson(hpDatareceived: safedata) {
+                  self.delegatehp?.didUpdateHP(self, hpModel: dataSecure)
+
+               }
                
             }
             }
@@ -43,31 +43,41 @@ struct HPManager{
       
    }
 }
-   
-   
-   func parseJsonHP(hpData: Data) -> HpModel?{
-     let decoder = JSONDecoder()
-      let hpmodelsito: HpModel?
-     do{
-        let decodedData = try decoder.decode(CharacterData.self, from: hpData)
-//        for i in 0...decodedData.items.count-1{
-           
-        print(decodedData)
-         hpmodelsito = HpModel(name: "", gender: "", house: "", wizard: true, patronus: "", actor: "", alive: true, image: "")
-//           let url = URL(string: thumbnail ?? defaultImageUrl)!
-//           var image = Data()
-//           if let data = try? Data(contentsOf: url) {
-//                    image = data
-//               }
-           
-//        }
-      return hpmodelsito
-   }catch{
-      print(error)
-      self.delegatehp?.didFailWithErrorHP(error: error)
-      return nil
+   func parseJson(hpDatareceived: Data) -> characterArray?{
+      let decoder = JSONDecoder()
+      print("ahoy")
+      var hpArray = characterArray(chArray: [])
+      do{
+         
+        let decodedData = try decoder.decode([WelcomeElement].self, from: hpDatareceived)
+         for i in 0...decodedData.count-1{
+         let name = decodedData[i].name
+         let gender = decodedData[i].gender
+         let house = decodedData[i].house
+         let wizard = decodedData[i].wizard
+         let patronus = decodedData[i].patronus
+         let actor = decodedData[i].actor
+         let alive = decodedData[i].alive
+//         let imageUrl = decodedData[i].image ?? defaultImageUrl
+//            let url = URL(string: imageUrl )
+//         var image = Data()
+//            if let data = try? Data(contentsOf:  url!){
+//            image = data
+//         }
+         
+            let hpCharacter = HpModel(name: name, gender: gender, house: house, wizard: wizard, patronus: patronus, actor: actor, alive: alive)
+            hpArray.chArray.append(hpCharacter)
+         }
+         return hpArray
+      }catch{
+         print(error)
+         self.delegatehp?.didFailWithErrorHP(error: error)
+         return nil
+      }
+      
    }
    
-}
 
+   
+   
 }

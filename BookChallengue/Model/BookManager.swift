@@ -9,20 +9,20 @@ import Foundation
 protocol BookManagerDelegate{
    func didFailWithError(error: Error)
    func didUpdateBook(_ bookManager: BookManager, bookModel: BookArray)
- 
 }
 
 struct BookManager{
-
+   
    let urlBooks = "https://www.googleapis.com/books/v1/volumes?q=HarryPotter&key=AIzaSyA4deYcEJce0HvvE9t09WfMTERNHO_NPak&startIndex=0&maxResults=10&printType=books"
    let defaultImageUrl = "https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg"
    var bookModel: BookModel?
    var delegate: BookManagerDelegate?
-
    
-    func fetchApi(){
+   
+   func fetchApi(){
       perfomRequest(urlString: urlBooks)
    }
+
    
    func perfomRequest(urlString: String){
       if let url = URL(string: urlString) {
@@ -37,15 +37,15 @@ struct BookManager{
                }
                
             }
-            }
+         }
          
          task.resume()
-      
+         
+      }
    }
-}
    
    
-    func parseJson(bookData: Data) -> BookArray?{
+   func parseJson(bookData: Data) -> BookArray?{
       let decoder = JSONDecoder()
       var booksArray = BookArray(bookArray: [])
       var  bookObj: BookModel
@@ -58,8 +58,8 @@ struct BookManager{
             let description = decodedData.items[i].volumeInfo.description
             let pageCount = decodedData.items[i].volumeInfo.pageCount
             let categories = decodedData.items[i].volumeInfo.categories
-            let averageRating = decodedData.items[i].volumeInfo.averageRating
-            let ratingsCount = decodedData.items[i].volumeInfo.ratingsCount
+            let averageRating = Double(decodedData.items[i].volumeInfo.averageRating ??  0.0)
+            let ratingsCount = Double(decodedData.items[i].volumeInfo.ratingsCount ??  0.0)
             let previewLink = decodedData.items[i].volumeInfo.previewLink
             let infoLink = decodedData.items[i].volumeInfo.infoLink
             let smallThumbnail = decodedData.items[i].volumeInfo.imageLinks?.smallThumbnail
@@ -67,12 +67,12 @@ struct BookManager{
             let url = URL(string: thumbnail ?? defaultImageUrl)!
             var image = Data()
             if let data = try? Data(contentsOf: url) {
-                     image = data
-                }
-      
+               image = data
+            }
+            
             bookObj = BookModel(title: title, authors: authors, description: description, pageCount: pageCount, categories: categories, averageRating: averageRating, ratingsCount: ratingsCount, previewLink: previewLink, infoLink: infoLink, smallThumbnail: smallThumbnail ?? "0", thumbnail: thumbnail ?? "1",imageWithData: image)
             booksArray.bookArray.append(bookObj)
-
+            
             
          }
          return booksArray

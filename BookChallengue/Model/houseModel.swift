@@ -1,21 +1,21 @@
+////
+////  houseModel.swift
+////  BookChallengue
+////
+////  Created by Jonathan Avila on 06/02/22.
+////
 //
-//  houseModel.swift
-//  BookChallengue
+//import Foundation
 //
-//  Created by Jonathan Avila on 06/02/22.
+//struct houseMode{
+//   let houses: [housesName]
+//}
+//struct housesName{
+//   let  Gryffindor: [CharacterData]
+//   let  Hufflepuff: [CharacterData]
+//   let  Ravenclaw: [CharacterData]
+//   let  Slytherin: [CharacterData]
+//}
 //
-
-import Foundation
-
-struct houseMode{
-   let houses: [housesName]
-}
-struct housesName{
-   let  Gryffindor: [CharacterData]
-   let  Hufflepuff: [CharacterData]
-   let  Ravenclaw: [CharacterData]
-   let  Slytherin: [CharacterData]
-}
-
-
-
+//
+//

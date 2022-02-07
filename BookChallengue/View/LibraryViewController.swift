@@ -10,6 +10,7 @@ class LibraryViewController: UIViewController {
     var stackb1: UIButton?
     var stackb2: UIButton?
     var stackb3: UIButton?
+    var hpManager = HPManager()
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var userController = userDB()
@@ -17,11 +18,15 @@ class LibraryViewController: UIViewController {
     var currentUser: nuevoUsuario?
     var holaLabel: UILabel?
     var morePopular: UILabel?
-//  var dataSource: LibraryDB?
     var stackView: UIStackView?
     var indexSection:Int?
     var tableView : UITableView?
     var dataSource: BookArray?
+    var dataSource2: characterArray?
+    var realDataSource: Int?
+    var numberofsection: Int?
+
+    
     var LibraryCollectionView : UICollectionView
     = {
         let layout = UICollectionViewFlowLayout()
@@ -40,6 +45,8 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = userController.currentUserGetter()
+       hpManager.delegatehp = self
+       hpManager.fetchApiHP()
         uiInit()
         view.backgroundColor = .white
         
@@ -136,15 +143,18 @@ class LibraryViewController: UIViewController {
         
         view.addSubview(tableView!)
         tableView?.addAnchorsAndSize(width: nil, height: nil, left: 20, top: 20, right: 20, bottom: 20, withAnchor: .top, relativeToView: stackView)
-        
+       numberofsection = dataSource?.bookArray.count
     }
+   
+   
 }
 
 extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
     
     // tableview config
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return dataSource?.bookArray.count ?? 0
+
+       return numberofsection ?? 0
     }
     
     
@@ -210,11 +220,13 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
    }
 
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
       let libro = dataSource?.bookArray[indexPath.row]
        let vc = BookViewController()
        vc.libro = libro
        vc.modalPresentationStyle = .fullScreen
        present(vc, animated: true, completion: nil)
+
    }
 
 
@@ -229,7 +241,9 @@ extension LibraryViewController{
    }
    
    @objc func stackb2Action (){
-       print("me toco boton2")
+      numberofsection = dataSource2?.chArray.count
+      self.tableView?.reloadData()
+      
    }
    
    @objc func stackb3Action (){
@@ -238,4 +252,21 @@ extension LibraryViewController{
    @objc  func dismissView(){
        dismiss(animated: true, completion: nil)
    }
+}
+
+
+extension LibraryViewController: HPManagerDelegate{
+   func didUpdateHP(_ hpManager: HPManager, hpModel: characterArray) {
+      DispatchQueue.main.sync {
+         dataSource2 = hpModel
+         
+
+      }
+   }
+   
+   func didFailWithErrorHP(error: Error) {
+      print(error)
+   }
+   
+
 }

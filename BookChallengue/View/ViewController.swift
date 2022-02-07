@@ -23,9 +23,7 @@ class ViewController: UIViewController{
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var bookApi = BookManager()
-    var hpApi = HPManager()
     var bookModelfetch: BookArray?
-    var hpModelFetch: HpModel?
     var userController = userDB()
     var usuarioDB: [nuevoUsuario] = []
     
@@ -34,8 +32,6 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         bookApi.delegate = self
-       hpApi.delegatehp = self
-       hpApi.fetchApiHP()
        bookApi.fetchApi()
         uiInit()
         // Do any additional setup after loading the view.
@@ -135,6 +131,7 @@ extension ViewController: UITextFieldDelegate {
 }
 
 extension ViewController: BookManagerDelegate{
+   
 
    
    @objc func logInAction(){
@@ -175,21 +172,7 @@ extension ViewController: BookManagerDelegate{
 
 }
 
-extension ViewController:HPManagerDelegate{
-   
-   func didFailWithErrorHP(error: Error) {
-      print(error)
-   }
-   
-   func didUpdateHP(_ bookManager: HPManager, hpModel: HpModel) {
-//      DispatchQueue.main.sync {
-//        
-//         hpModelFetch = hpModel
-//      
-//      }
-   }
-   
-}
+
 
 
 

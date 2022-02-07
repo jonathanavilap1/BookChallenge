@@ -11,7 +11,6 @@
 		AC4AC38627AA2A8E0014542C /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AC38527AA2A8E0014542C /* BookModel.swift */; };
 		AC4AC38827AA2AAD0014542C /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AC38727AA2AAD0014542C /* BookData.swift */; };
 		AC9E772427B0AF2800B7C408 /* author.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E772327B0AF2700B7C408 /* author.swift */; };
-		AC9E772627B0D2EB00B7C408 /* HPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E772527B0D2EB00B7C408 /* HPManager.swift */; };
 		AC9E772827B0D32F00B7C408 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E772727B0D32F00B7C408 /* CharactersModel.swift */; };
 		AC9E772C27B0D7CB00B7C408 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E772B27B0D7CB00B7C408 /* CharacterData.swift */; };
 		AC9E773027B0D8AF00B7C408 /* houseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E772F27B0D8AF00B7C408 /* houseModel.swift */; };
@@ -32,6 +31,9 @@
 		ACECC2CD27A0513D007F16C2 /* LibraryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */; };
 		ACECC2CF27A0522B007F16C2 /* libraryDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2CE27A0522A007F16C2 /* libraryDataBase.swift */; };
 		ACECC2D127A081D5007F16C2 /* CategoriasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */; };
+		ACFA37EA27B17E6B00177CA3 /* HPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37E927B17E6B00177CA3 /* HPManager.swift */; };
+		ACFA37EC27B19F3C00177CA3 /* charactersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */; };
+		ACFA37EE27B1B9BE00177CA3 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37ED27B1B9BE00177CA3 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +41,6 @@
 		AC4AC38527AA2A8E0014542C /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		AC4AC38727AA2AAD0014542C /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		AC9E772327B0AF2700B7C408 /* author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = author.swift; sourceTree = "<group>"; };
-		AC9E772527B0D2EB00B7C408 /* HPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPManager.swift; sourceTree = "<group>"; };
 		AC9E772727B0D32F00B7C408 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 		AC9E772B27B0D7CB00B7C408 /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
 		AC9E772F27B0D8AF00B7C408 /* houseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = houseModel.swift; sourceTree = "<group>"; };
@@ -62,6 +63,9 @@
 		ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionCell.swift; sourceTree = "<group>"; };
 		ACECC2CE27A0522A007F16C2 /* libraryDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = libraryDataBase.swift; sourceTree = "<group>"; };
 		ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriasCell.swift; sourceTree = "<group>"; };
+		ACFA37E927B17E6B00177CA3 /* HPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPManager.swift; sourceTree = "<group>"; };
+		ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = charactersCell.swift; sourceTree = "<group>"; };
+		ACFA37ED27B1B9BE00177CA3 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +127,7 @@
 				ACECC255279F3A99007F16C2 /* UsersModel.swift */,
 				ACECC257279F3AAC007F16C2 /* Books.swift */,
 				AC4AC38327AA2A4A0014542C /* BookManager.swift */,
-				AC9E772527B0D2EB00B7C408 /* HPManager.swift */,
+				ACFA37E927B17E6B00177CA3 /* HPManager.swift */,
 				AC9E772727B0D32F00B7C408 /* CharactersModel.swift */,
 				AC9E772B27B0D7CB00B7C408 /* CharacterData.swift */,
 				AC9E772F27B0D8AF00B7C408 /* houseModel.swift */,
@@ -140,6 +144,7 @@
 				ACCCD7DD279C8199007F4379 /* ViewController.swift */,
 				ACECC24F279CE71B007F16C2 /* RegisterViewController.swift */,
 				ACECC2C2279F86EE007F16C2 /* LibraryViewController.swift */,
+				ACFA37ED27B1B9BE00177CA3 /* File.swift */,
 				ACECC2C9279FAD49007F16C2 /* BookViewController.swift */,
 			);
 			path = View;
@@ -159,6 +164,7 @@
 			children = (
 				ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */,
 				ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */,
+				ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */,
 				AC9E772327B0AF2700B7C408 /* author.swift */,
 			);
 			path = SubViewa;
@@ -240,14 +246,16 @@
 				ACECC2D127A081D5007F16C2 /* CategoriasCell.swift in Sources */,
 				ACCCD7DE279C8199007F4379 /* ViewController.swift in Sources */,
 				AC4AC38427AA2A4A0014542C /* BookManager.swift in Sources */,
+				ACFA37EA27B17E6B00177CA3 /* HPManager.swift in Sources */,
 				ACECC252279CE766007F16C2 /* headerImageSetter.swift in Sources */,
 				ACECC2CF27A0522B007F16C2 /* libraryDataBase.swift in Sources */,
 				AC4AC38627AA2A8E0014542C /* BookModel.swift in Sources */,
 				ACECC2CD27A0513D007F16C2 /* LibraryCollectionCell.swift in Sources */,
-				AC9E772627B0D2EB00B7C408 /* HPManager.swift in Sources */,
 				AC9E773027B0D8AF00B7C408 /* houseModel.swift in Sources */,
 				ACECC2CA279FAD49007F16C2 /* BookViewController.swift in Sources */,
 				ACCCD7DA279C8199007F4379 /* AppDelegate.swift in Sources */,
+				ACFA37EE27B1B9BE00177CA3 /* File.swift in Sources */,
+				ACFA37EC27B19F3C00177CA3 /* charactersCell.swift in Sources */,
 				AC9E772C27B0D7CB00B7C408 /* CharacterData.swift in Sources */,
 				ACECC258279F3AAC007F16C2 /* Books.swift in Sources */,
 				AC9E772827B0D32F00B7C408 /* CharactersModel.swift in Sources */,
