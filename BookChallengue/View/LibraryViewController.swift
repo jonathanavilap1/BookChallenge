@@ -59,43 +59,43 @@ class LibraryViewController: UIViewController {
     func uiInit(){
         
         //MARK: Header
-        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage2")
+        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage")
         view.addSubview(headerImage!)
-        headerImage?.addAnchorsAndSize(width: width, height: height/8, left: 0, top: 31, right: 0, bottom: height/0.2)
+        headerImage?.addAnchorsAndSize(width: width, height: height/6, left: 5, top: 35, right: 5, bottom: nil)
         
         //MARK: BackButton
         backButton = UIButton()
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
         view.addSubview(backButton!)
-        backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -30, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -130, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backButton?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         //MARK: CurrentUserLabel
         holaLabel = headerInit.uiLabelSetter(labelString: ("Hola"), labelSize: 25, textaligment: .center, isBold: true, isHighLighted: false)
         view.addSubview(holaLabel!)
-        holaLabel?.addAnchors(left: nil, top: -45, right: 30, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        holaLabel?.addAnchors(left: width/4, top: -25, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         
         
         currentUserLabel = headerInit.uiLabelSetter(labelString: (currentUser?.usuario)!, labelSize: 30, textaligment: .center, isBold: true, isHighLighted: true)
         view.addSubview(currentUserLabel!)
-        currentUserLabel?.addAnchors(left: nil, top:-5, right: 10, bottom: nil, withAnchor: .top, relativeToView: holaLabel)
+        currentUserLabel?.addAnchors(left: width/4, top: -8, right: width/4, bottom: nil, withAnchor: .top, relativeToView: holaLabel)
         
         
         //MARK: back text button
         backLabel = headerInit.uiButtonSetter(uiButtonNmae: "Back", textAligments: .left, cornerRadius: 0, isBackgroundClear: true, isUnderlined: false)
         view.addSubview(backLabel!)
-        backLabel?.addAnchors(left: nil, top: -33, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        backLabel?.addAnchors(left: nil, top: -133, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backLabel?.addAnchors(left: -7, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
         backLabel?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         morePopular = headerInit.uiLabelSetter(labelString: ("Most Popular"), labelSize: 20, textaligment: .center, isBold: true, isHighLighted: false)
         view.addSubview(morePopular!)
-        morePopular?.addAnchors(left: width/4, top:45, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        morePopular?.addAnchors(left: width/4, top:40, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         // MARK: CollectionView Carrousell
         LibraryCollectionView.delegate = self
         LibraryCollectionView.dataSource = self
         view.addSubview(LibraryCollectionView)
                 LibraryCollectionView.scrollToItem(at:IndexPath(item: 4, section: 1), at: .right, animated: true)
-        LibraryCollectionView.addAnchorsAndSize(width: (width/4)*3, height: (height/4)*1, left: 0, top: 10, right: 0, bottom: nil, withAnchor: .top, relativeToView: morePopular)
+        LibraryCollectionView.addAnchorsAndSize(width: (width/4)*3, height: (height/4)*1, left: 0, top: 4, right: 0, bottom: nil, withAnchor: .top, relativeToView: morePopular)
         
         
         
@@ -133,7 +133,7 @@ class LibraryViewController: UIViewController {
         
         
         view.addSubview(stackView!)
-        stackView?.addAnchors(left: 20, top: 10, right: 20, bottom: nil, withAnchor: .top, relativeToView: LibraryCollectionView)
+        stackView?.addAnchors(left: 20, top: 4, right: 20, bottom: nil, withAnchor: .top, relativeToView: LibraryCollectionView)
         
         // tableView
         tableView = UITableView()
@@ -142,7 +142,7 @@ class LibraryViewController: UIViewController {
         tableView?.dataSource = self
         
         view.addSubview(tableView!)
-        tableView?.addAnchorsAndSize(width: nil, height: nil, left: 20, top: 20, right: 20, bottom: 20, withAnchor: .top, relativeToView: stackView)
+        tableView?.addAnchorsAndSize(width: nil, height: nil, left: 20, top: 10, right: 20, bottom: 20, withAnchor: .top, relativeToView: stackView)
        numberofsection = dataSource?.bookArray.count
     }
    

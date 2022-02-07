@@ -43,15 +43,15 @@ class ViewController: UIViewController{
     
     func uiInit(){
         
-        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage2")
+        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage")
         view.addSubview(headerImage!)
-        headerImage?.addAnchorsAndSize(width: width, height: height/8, left: -20, top: 32, right: 0, bottom: nil)
+        headerImage?.addAnchorsAndSize(width: width, height: height/6, left: 5, top: 35, right: 5, bottom: nil)
         
         
         // MARK: Logo
         appIcon = headerInit.uiImageViewSetter(uiImageName: "logo")
         view.addSubview(appIcon!)
-        appIcon?.addAnchorsAndSize(width: width/4, height: width/4, left: width/3, top: -10, right: width/3, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        appIcon?.addAnchorsAndSize(width: width/2.5, height: width/2.2, left: width/3.5, top: 40, right: width/3.5, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         
         // MARK: WelcomeLabel
         
@@ -62,11 +62,11 @@ class ViewController: UIViewController{
         // MARK: Email Buttons
         emailTextFieldImage = headerInit.uiImageViewSetter(uiImageName: "emailimage")
         view.addSubview(emailTextFieldImage!)
-        emailTextFieldImage?.addAnchors(left: width/14, top: 100, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
+        emailTextFieldImage?.addAnchors(left: width/14, top: 50, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
         
         emailTextField = headerInit.textFieldSetter(isClear: true, placeHolderString: "example@gmail.com",isSecure: false)
         view.addSubview(emailTextField!)
-        emailTextField?.addAnchors(left: width/3, top: 123, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
+        emailTextField?.addAnchors(left: width/3, top: 73, right: width/14, bottom: nil, withAnchor: .top, relativeToView: welcomeLabel)
         emailTextField!.delegate = self
         
         // MARK: password Buttons

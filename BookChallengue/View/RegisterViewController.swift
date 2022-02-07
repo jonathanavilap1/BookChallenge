@@ -35,22 +35,22 @@ class RegisterViewController: UIViewController {
     
     func uiInit(){
         //MARK: Header
-        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage2")
+        headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage")
         view.addSubview(headerImage!)
-        headerImage?.addAnchorsAndSize(width: width, height: height/8, left: 0, top: 31, right: 0, bottom: height/0.2)
+        headerImage?.addAnchorsAndSize(width: width, height: height/6, left: 5, top: 35, right: 5, bottom: nil)
         
         //MARK: BackButton
         backButton = UIButton()
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
         view.addSubview(backButton!)
-        backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -30, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -130, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backButton?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         
         //MARK: back text button
         backLabel = headerInit.uiButtonSetter(uiButtonNmae: "Back", textAligments: .left, cornerRadius: 0, isBackgroundClear: true, isUnderlined: false)
         view.addSubview(backLabel!)
-        backLabel?.addAnchors(left: nil, top: -33, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        backLabel?.addAnchors(left: nil, top: -133, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backLabel?.addAnchors(left: -7, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
         backLabel?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
@@ -59,7 +59,7 @@ class RegisterViewController: UIViewController {
         descriptionLabel = headerInit.uiLabelSetter(labelString: "You are few steps away of the best expirence of your life ", labelSize: 15, textaligment: .center, isBold: false,isHighLighted: false)
         descriptionLabel?.numberOfLines = 0
         view.addSubview(descriptionLabel!)
-        descriptionLabel?.addAnchors(left: 10, top: 5, right: 10, bottom: nil, withAnchor: .top, relativeToView: backLabel)
+        descriptionLabel?.addAnchors(left: 10, top: 125, right: 10, bottom: nil, withAnchor: .top, relativeToView: backLabel)
         
         //MARK: view for form
         formView = headerInit.uiViewSetter()
