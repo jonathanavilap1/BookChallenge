@@ -17,11 +17,11 @@ class LibraryViewController: UIViewController {
     var currentUser: nuevoUsuario?
     var holaLabel: UILabel?
     var morePopular: UILabel?
-    var dataSource: LibraryDB?
+//  var dataSource: LibraryDB?
     var stackView: UIStackView?
     var indexSection:Int?
     var tableView : UITableView?
-    var bookApi = BookManager()
+    var dataSource: BookArray?
     var LibraryCollectionView : UICollectionView
     = {
         let layout = UICollectionViewFlowLayout()
@@ -40,9 +40,7 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = userController.currentUserGetter()
-        dataSource = LibraryDB()
         uiInit()
-       bookApi.delegate = self
         view.backgroundColor = .white
         
     }
@@ -85,11 +83,11 @@ class LibraryViewController: UIViewController {
         morePopular = headerInit.uiLabelSetter(labelString: ("Most Popular"), labelSize: 20, textaligment: .center, isBold: true, isHighLighted: false)
         view.addSubview(morePopular!)
         morePopular?.addAnchors(left: width/4, top:45, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
-        //MARK: CollectionView Carrousell
+        // MARK: CollectionView Carrousell
         LibraryCollectionView.delegate = self
         LibraryCollectionView.dataSource = self
         view.addSubview(LibraryCollectionView)
-        //        LibraryCollectionView.scrollToItem(at:IndexPath(item: 4, section: 1), at: .right, animated: true)
+                LibraryCollectionView.scrollToItem(at:IndexPath(item: 4, section: 1), at: .right, animated: true)
         LibraryCollectionView.addAnchorsAndSize(width: (width/4)*3, height: (height/4)*1, left: 0, top: 10, right: 0, bottom: nil, withAnchor: .top, relativeToView: morePopular)
         
         
@@ -108,7 +106,6 @@ class LibraryViewController: UIViewController {
         stackb3 = headerInit.uiButtonSetter(uiButtonNmae: "Autores", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb3?.addTarget(self, action: #selector(stackb3Action), for: .touchUpInside)
         stackb3?.setTitleColor(.white, for: .normal)
-        //stackview
         stackView = headerInit.stackViewSetter()
         stackView?.addArrangedSubview(stackb1!)
         
@@ -147,13 +144,13 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
     
     // tableview config
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.libreria?.allLibro?[section].libro?.count ?? 0
+       return dataSource?.bookArray.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let libro = dataSource?.libreria?.allLibro?[indexPath.section].libro?[indexPath.row]
-        let cell = CategoriasCell(libro: libro!)
+       let libro = dataSource?.bookArray[indexPath.row]
+       let cell = CategoriasCell(libro: libro!)
         return cell
     }
     
@@ -172,7 +169,7 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+       let libro = dataSource?.bookArray[indexPath.section]
         let vc = BookViewController()
         vc.libro = libro
         vc.modalPresentationStyle = .fullScreen
@@ -186,58 +183,49 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
 extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
    // Collection View Config
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       indexSection = dataSource?.libreria?.categorias?[section].libro?.count
-       
-       return dataSource?.libreria?.categorias?[section].libro?.count ?? 0
+      indexSection = dataSource?.bookArray.count ?? 0
+
+      return indexSection!
    }
-   
+
    func numberOfSections(in collectionView: UICollectionView) -> Int {
-       return (dataSource?.libreria?.categorias?.count)!
+       return dataSource?.bookArray.count ?? 0
    }
-   
+
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        let cell = LibraryCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LibraryCollectionCell
-       
-       let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.item]
-       
-       
+
+      let libro = dataSource?.bookArray[indexPath.row]
+
+
        cell.setData(libro: libro!)
-       
+
        return cell
    }
-   
+
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       
+
        return CGSize(width: width / 2 - 40, height: height / 4)
        //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
    }
-   
+
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       let libro = dataSource?.libreria?.categorias?[indexPath.section].libro?[indexPath.row]
+      let libro = dataSource?.bookArray[indexPath.row]
        let vc = BookViewController()
        vc.libro = libro
        vc.modalPresentationStyle = .fullScreen
        present(vc, animated: true, completion: nil)
    }
-   
-   
+
+
 }
 
 
-extension LibraryViewController: BookManagerDelegate{
-   func didFailWithError(error: Error) {
-      print(error)
-   }
-   
-   func didUpdateBook(_ bookManager: BookManager, bookModel: BookModel) {
-//      DispatchQueue.main.sync {
-//         printContent(bookManager)
-//      }
-   }
-   
+extension LibraryViewController{
+
    //objc functions
    @objc func stackb1Action (){
-         bookApi.fetchApi()
+
    }
    
    @objc func stackb2Action (){

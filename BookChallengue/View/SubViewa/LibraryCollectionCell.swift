@@ -30,8 +30,8 @@ class LibraryCollectionCell : UICollectionViewCell{
         
     }
     
-    func setData(libro : setNewLibro){
-        imageProduct.image = UIImage(named: libro.image ?? "")
+    func setData(libro : BookModel){
+       imageProduct.image = UIImage(data: libro.imageWithData!)
         
     }
     

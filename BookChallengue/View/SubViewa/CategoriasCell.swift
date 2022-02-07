@@ -16,14 +16,15 @@ class CategoriasCell : UITableViewCell{
     var categoriaLibro : UILabel?
     var addButton : UIButton?
     var imageLibro : UIImageView?
-    
-    var libro : setNewLibro?
+    var libro : BookModel?
+   
+
     
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
-    init(libro : setNewLibro){
+    init(libro : BookModel){
         super.init(style: .default, reuseIdentifier: nil)
         self.libro = libro
         self.backgroundColor = .clear
@@ -32,15 +33,12 @@ class CategoriasCell : UITableViewCell{
     }
     
     func initUI(){
-        
         ownContent = UIView(frame: CGRect(x: 0, y: 5, width: width - 20, height: height/5 - 10))
         ownContent?.backgroundColor = .white
         ownContent?.layer.borderColor = headerInit.backgroundButtoncolor.cgColor
         ownContent?.layer.cornerRadius = 15
         self.addSubview(ownContent!)
-        
-        
-        imageLibro = headerInit.uiImageViewSetter(uiImageName: (libro?.image)!)
+       imageLibro = UIImageView(image: UIImage(data: (libro?.imageWithData)!))
         imageLibro?.layer.cornerRadius = 10
         //  imageProduct?.contentMode = .scaleAspectFit
         imageLibro?.layer.masksToBounds = true
@@ -51,7 +49,7 @@ class CategoriasCell : UITableViewCell{
         ownContent?.addSubview(tituloLabel)
         tituloLabel.addAnchors(left: 5, top: 10, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         
-        tituloLibro = headerInit.uiLabelSetter(labelString: (libro?.titulo)!, labelSize: 15, textaligment: .center, isBold: false, isHighLighted: false)
+       tituloLibro = headerInit.uiLabelSetter(labelString: (libro?.title)!, labelSize: 15, textaligment: .center, isBold: false, isHighLighted: false)
         tituloLibro?.numberOfLines = 0
         ownContent?.addSubview(tituloLibro!)
         
@@ -63,7 +61,7 @@ class CategoriasCell : UITableViewCell{
         byAutor.addAnchors(left: 5, top: nil, right: 40, bottom: nil, withAnchor: .left, relativeToView: imageLibro)
         byAutor.addAnchors(left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: tituloLibro)
         
-        autorLibro = headerInit.uiLabelSetter(labelString: (libro?.autor)!, labelSize: 14, textaligment: .center, isBold: false, isHighLighted: false)
+       autorLibro = headerInit.uiLabelSetter(labelString: (libro?.authors?[0]) ?? "", labelSize: 14, textaligment: .center, isBold: false, isHighLighted: false)
         autorLibro?.numberOfLines = 0
         ownContent?.addSubview(autorLibro!)
         
@@ -81,3 +79,5 @@ class CategoriasCell : UITableViewCell{
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+

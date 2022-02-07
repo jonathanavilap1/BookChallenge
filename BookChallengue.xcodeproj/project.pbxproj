@@ -10,6 +10,7 @@
 		AC4AC38427AA2A4A0014542C /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AC38327AA2A4A0014542C /* BookManager.swift */; };
 		AC4AC38627AA2A8E0014542C /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AC38527AA2A8E0014542C /* BookModel.swift */; };
 		AC4AC38827AA2AAD0014542C /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AC38727AA2AAD0014542C /* BookData.swift */; };
+		AC9E772427B0AF2800B7C408 /* author.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E772327B0AF2700B7C408 /* author.swift */; };
 		ACCCD7DA279C8199007F4379 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD7D9279C8199007F4379 /* AppDelegate.swift */; };
 		ACCCD7DC279C8199007F4379 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD7DB279C8199007F4379 /* SceneDelegate.swift */; };
 		ACCCD7DE279C8199007F4379 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD7DD279C8199007F4379 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		AC4AC38327AA2A4A0014542C /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		AC4AC38527AA2A8E0014542C /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		AC4AC38727AA2AAD0014542C /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
+		AC9E772327B0AF2700B7C408 /* author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = author.swift; sourceTree = "<group>"; };
 		ACCCD7D6279C8199007F4379 /* BookChallengue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookChallengue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCCD7D9279C8199007F4379 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCCD7DB279C8199007F4379 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */,
 				ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */,
+				AC9E772327B0AF2700B7C408 /* author.swift */,
 			);
 			path = SubViewa;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				ACECC2C3279F86EF007F16C2 /* LibraryViewController.swift in Sources */,
 				ACECC25A279F4EB1007F16C2 /* userDataBase.swift in Sources */,
 				ACCCD7F2279C85E4007F4379 /* utils.swift in Sources */,
+				AC9E772427B0AF2800B7C408 /* author.swift in Sources */,
 				ACECC256279F3A99007F16C2 /* UsersModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

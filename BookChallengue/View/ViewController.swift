@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     var registerButton: UIButton?
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
+    var bookApi = BookManager()
+    var bookModelfetch: BookArray?
     var userController = userDB()
     var usuarioDB: [nuevoUsuario] = []
     
@@ -29,7 +31,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        bookApi.delegate = self
+       bookApi.fetchApi()
         uiInit()
         // Do any additional setup after loading the view.
     }
@@ -124,27 +127,51 @@ extension ViewController: UITextFieldDelegate {
         present(registerVC, animated: true, completion: nil)
     }
     
-    @objc func logInAction(){
-        usuarioDB =  userController.getDbArray()
-        
-        let inputUser = emailTextField?.text
-        let inputPassword = passwordTextField?.text
-        let usuarioDB = userController.getDbArray()
-        let libraryVc = LibraryViewController()
-        libraryVc.modalPresentationStyle = .fullScreen
-        
+    
+}
+
+extension ViewController: BookManagerDelegate{
+   @objc func logInAction(){
+       usuarioDB =  userController.getDbArray()
+       
+//        let inputUser = emailTextField?.text
+//        let inputPassword = passwordTextField?.text
+//        let usuarioDB = userController.getDbArray()
+       let libraryVc = LibraryViewController()
+       libraryVc.modalPresentationStyle = .fullScreen
+      libraryVc.dataSource = bookModelfetch
 //        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
 //            let fetchedDbUser = usuarioDB[index]
 //            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
 //                userController.currentUserSetter(currentuser: index)
-                present(libraryVc, animated: true, completion: nil)
+               present(libraryVc, animated: true, completion: nil)
+      
 //            }}else{
 //                let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
 //                self.present(alert, animated: true, completion: nil)
 //
 //            }
-    }
-    
+   }
+   
+   
+   func didFailWithError(error: Error) {
+      print(error)
+   }
+   
+   func didUpdateBook(_ bookManager: BookManager, bookModel: BookArray) {
+      DispatchQueue.main.sync {
+        
+         bookModelfetch = bookModel
+      
+      }
+      
+   }
+   
+   
+   
 }
+
+
+
 
 

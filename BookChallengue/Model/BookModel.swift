@@ -6,7 +6,20 @@
 //
 
 import Foundation
+
+struct BookArray{
+   var bookArray: [BookModel]
+}
+
 struct BookModel{
-   let type: String
-   let id: String
+   let title: String?
+   let authors: [String]?
+   let description: String?
+   let pageCount: Int?
+   let categories: [String]?
+   let averageRating, ratingsCount: Int?
+   let previewLink, infoLink: String?
+   let smallThumbnail: String?
+   let thumbnail: String?
+   let imageWithData: Data?
 }
