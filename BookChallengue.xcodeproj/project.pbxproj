@@ -34,6 +34,7 @@
 		ACFA37EA27B17E6B00177CA3 /* HPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37E927B17E6B00177CA3 /* HPManager.swift */; };
 		ACFA37EC27B19F3C00177CA3 /* charactersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */; };
 		ACFA37EE27B1B9BE00177CA3 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37ED27B1B9BE00177CA3 /* File.swift */; };
+		ACFA37F027B3447200177CA3 /* HouseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA37EF27B3447200177CA3 /* HouseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		ACFA37E927B17E6B00177CA3 /* HPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPManager.swift; sourceTree = "<group>"; };
 		ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = charactersCell.swift; sourceTree = "<group>"; };
 		ACFA37ED27B1B9BE00177CA3 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		ACFA37EF27B3447200177CA3 /* HouseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				ACECC257279F3AAC007F16C2 /* Books.swift */,
 				AC4AC38327AA2A4A0014542C /* BookManager.swift */,
 				ACFA37E927B17E6B00177CA3 /* HPManager.swift */,
+				ACFA37EF27B3447200177CA3 /* HouseManager.swift */,
 				AC9E772727B0D32F00B7C408 /* CharactersModel.swift */,
 				AC9E772B27B0D7CB00B7C408 /* CharacterData.swift */,
 				AC9E772F27B0D8AF00B7C408 /* houseModel.swift */,
@@ -264,6 +267,7 @@
 				ACECC25A279F4EB1007F16C2 /* userDataBase.swift in Sources */,
 				ACCCD7F2279C85E4007F4379 /* utils.swift in Sources */,
 				AC9E772427B0AF2800B7C408 /* author.swift in Sources */,
+				ACFA37F027B3447200177CA3 /* HouseManager.swift in Sources */,
 				ACECC256279F3A99007F16C2 /* UsersModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

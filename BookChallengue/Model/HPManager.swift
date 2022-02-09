@@ -45,12 +45,12 @@ struct HPManager{
 }
    func parseJson(hpDatareceived: Data) -> characterArray?{
       let decoder = JSONDecoder()
-      print("ahoy")
       var hpArray = characterArray(chArray: [])
+      var hpCharacter: HpModel
       do{
          
         let decodedData = try decoder.decode([WelcomeElement].self, from: hpDatareceived)
-         for i in 0...decodedData.count-1{
+         for i in 0...10{
          let name = decodedData[i].name
          let gender = decodedData[i].gender
          let house = decodedData[i].house
@@ -58,14 +58,16 @@ struct HPManager{
          let patronus = decodedData[i].patronus
          let actor = decodedData[i].actor
          let alive = decodedData[i].alive
-//         let imageUrl = decodedData[i].image ?? defaultImageUrl
-//            let url = URL(string: imageUrl )
-//         var image = Data()
-//            if let data = try? Data(contentsOf:  url!){
-//            image = data
-//         }
+         let imageUrl = decodedData[i].image ?? defaultImageUrl
+         let url = URL(string: imageUrl) ?? URL(string: defaultImageUrl)
+         var image = Data()
+            if let data = try? Data(contentsOf: url!) {
+               image = data
+               print(data)
+            }
+           
          
-            let hpCharacter = HpModel(name: name, gender: gender, house: house, wizard: wizard, patronus: patronus, actor: actor, alive: alive)
+         hpCharacter = HpModel(name: name, gender: gender, house: house, wizard: wizard, patronus: patronus, actor: actor, alive: alive, image: image)
             hpArray.chArray.append(hpCharacter)
          }
          return hpArray

@@ -66,7 +66,7 @@ class author: UIViewController {
        //  imageProduct?.contentMode = .scaleAspectFit
        autorimage.layer.masksToBounds = true
         viewBook?.addSubview(autorimage)
-        autorimage.addAnchorsAndSize(width: nil, height: 180, left: 75 , top: -10, right: 75, bottom: nil)
+        autorimage.addAnchorsAndSize(width: nil, height: 180, left: 60 , top: -10, right: 60, bottom: nil)
         
         let aboutAutor = headerInit.uiLabelSetter(labelString: "About the Autor", labelSize: 17, textaligment: .center, isBold: true, isHighLighted: true)
         viewBook1!.addSubview(aboutAutor)

@@ -20,5 +20,5 @@ struct HpModel {
     let patronus: String?
     let actor: String?
     let alive: Bool?
-//    let image: Data?
+    let image: Data?
 }

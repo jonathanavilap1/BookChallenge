@@ -11,6 +11,7 @@ class LibraryViewController: UIViewController {
     var stackb2: UIButton?
     var stackb3: UIButton?
     var hpManager = HPManager()
+//    var houseManager = HouseManager()
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var userController = userDB()
@@ -23,6 +24,7 @@ class LibraryViewController: UIViewController {
     var tableView : UITableView?
     var dataSource: BookArray?
     var dataSource2: characterArray?
+    var dataSource3: houseMode?
     var realDataSource: Int?
     var numberofsection: Int?
 
@@ -46,6 +48,8 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
         currentUser = userController.currentUserGetter()
        hpManager.delegatehp = self
+//       houseManager.delegatehouse = self
+//       houseManager.fetchApiHP()
        hpManager.fetchApiHP()
         uiInit()
         view.backgroundColor = .white
@@ -159,9 +163,28 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let libro = dataSource?.bookArray[indexPath.row]
-       let cell = CategoriasCell(libro: libro!)
-        return cell
+ 
+       let cell: UIView?
+       switch realDataSource {
+       case 1:
+          let libro = dataSource?.bookArray[indexPath.row]
+         cell = CategoriasCell(libro: libro!)
+       case 2:
+          let libro = dataSource2?.chArray[indexPath.row]
+           cell = charactersCell(libro: libro!)
+          
+//       case 3:
+////          let libro = dataSource3?.houses[indexPath.section].
+////           cell = CategoriasCell(libro: libro!)
+   
+      default:
+          let libro = dataSource?.bookArray[indexPath.row]
+           cell = CategoriasCell(libro: libro!)
+
+          
+       }
+       
+       return cell! as! UITableViewCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -169,21 +192,59 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
     }
     // tablewviewdelegate
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
-        header.backgroundColor = .white
-        view.addSubview(header)
-        header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
+       let view = UIView()
+       switch realDataSource {
+       case 1:
+          let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
+          header.backgroundColor = .white
+          view.addSubview(header)
+          header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
+       case 2:
+          print("case2")
+//       case 3:
+//          let label = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 20))
+//          label.text = dataSource3?.houses[section].
+//          label.font = .boldSystemFont(ofSize: 20)
+//          view.addSubview(label)
+   
+      default:
+          
+          let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
+          header.backgroundColor = .white
+          view.addSubview(header)
+          header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
+
+          
+       }
+        
         return view
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       let libro = dataSource?.bookArray[indexPath.section]
-        let vc = BookViewController()
-        vc.libro = libro
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+       switch realDataSource {
+       case 1:
+          let libro = dataSource?.bookArray[indexPath.section]
+           let vc = BookViewController()
+           vc.libro = libro
+           vc.modalPresentationStyle = .fullScreen
+           present(vc, animated: true, completion: nil)
+       case 2:
+          print("case2")
+       case 3:
+          print("case3")
+   
+      default:
+          let libro = dataSource?.bookArray[indexPath.section]
+           let vc = BookViewController()
+           vc.libro = libro
+           vc.modalPresentationStyle = .fullScreen
+           present(vc, animated: true, completion: nil)
+          
+          
+       }
+       
+      
     }
    
     
@@ -237,17 +298,23 @@ extension LibraryViewController{
 
    //objc functions
    @objc func stackb1Action (){
-
+      
+      numberofsection = dataSource?.bookArray.count
+      realDataSource = 1
+      self.tableView?.reloadData()
    }
    
    @objc func stackb2Action (){
       numberofsection = dataSource2?.chArray.count
+      realDataSource = 2
       self.tableView?.reloadData()
       
    }
    
    @objc func stackb3Action (){
-       print("me toco boton3")
+      numberofsection = dataSource2?.chArray.count
+      realDataSource = 3
+      self.tableView?.reloadData()
    }
    @objc  func dismissView(){
        dismiss(animated: true, completion: nil)
@@ -270,3 +337,19 @@ extension LibraryViewController: HPManagerDelegate{
    
 
 }
+
+//extension LibraryViewController: HouseManagerDelegate{
+//   func didFailWithErrorHouse(error: Error) {
+//      print(error)
+//   }
+//
+//   func didUpdateHPHouse(_ hpManager: HouseManager, hpModel: houseMode) {
+//      DispatchQueue.main.sync {
+//         dataSource3 = hpModel
+//      }
+//   }
+//
+
+   
+
+//}
