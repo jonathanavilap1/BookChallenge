@@ -22,7 +22,7 @@ class LoginViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .whiteanimate
+        view.backgroundColor = .white
         uiInit()
         // Do any additional setup after loading the view.
     }
@@ -119,7 +119,7 @@ extension LoginViewController: UITextFieldDelegate {
     
 }
 
-extension LoginViewController: BookManagerDelegate{
+extension LoginViewController{
    
 
    
@@ -153,13 +153,13 @@ extension LoginViewController: BookManagerDelegate{
       print(error)
    }
    
-   func didUpdateBook(_ bookManager: BookManager, bookModel: BookArray) {
-      DispatchQueue.main.sync {
-        
-         bookModelfetch = bookModel
+//   func didUpdateBook(_ bookManager: BookManager, bookModel: BookArray) {
+//      DispatchQueue.main.sync {
+//
+//         bookModelfetch = bookModel
+//
+//      }
       
-      }
-      
-   }
+//   }
 
 }

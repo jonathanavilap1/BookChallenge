@@ -13,6 +13,7 @@
 //
 import UIKit
 
+
 class SplashScreenView: UIView {
     
     override init(frame: CGRect) {

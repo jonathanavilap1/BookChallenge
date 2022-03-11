@@ -9,6 +9,7 @@ target 'BookChallengue' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'IQKeyboardManager'
+  pod 'SwiftGifOrigin'
   
   inhibit_all_warnings!
   
