@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController{
     
@@ -24,16 +25,22 @@ class ViewController: UIViewController{
     var height = UIScreen.main.bounds.height
     var bookApi = BookManager()
     var bookModelfetch: BookArray?
-    var userController = userDB()
-    var usuarioDB: [nuevoUsuario] = []
+    let splash = CupheadView()
+    var timer = Timer()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        bookApi.delegate = self
-       bookApi.fetchApi()
-        uiInit()
+        splashview()
+        bookApi.fetchApi()
+//        sleep(4)
+       DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+          self.splash.removeFromSuperview()
+          self.view.backgroundColor = .white
+          self.bookApi.delegate = self
+          self.uiInit()
+       }
+
         // Do any additional setup after loading the view.
     }
     
@@ -135,26 +142,29 @@ extension ViewController: BookManagerDelegate{
 
    
    @objc func logInAction(){
-       usuarioDB =  userController.getDbArray()
-       
-//        let inputUser = emailTextField?.text
-//        let inputPassword = passwordTextField?.text
-//        let usuarioDB = userController.getDbArray()
+      lazy var alert = UIAlertController()
        let libraryVc = LibraryViewController()
        libraryVc.modalPresentationStyle = .fullScreen
       libraryVc.dataSource = bookModelfetch
-//        if let index = usuarioDB.firstIndex(where: { $0.email == inputUser}){
-//            let fetchedDbUser = usuarioDB[index]
-//            if inputUser == fetchedDbUser.usuario || inputPassword == fetchedDbUser.password{
-//                userController.currentUserSetter(currentuser: index)
-               present(libraryVc, animated: true, completion: nil)
-      
-//            }}else{
-//                let alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
-//                self.present(alert, animated: true, completion: nil)
-//
-//            }
+      if (passwordTextField?.text?.isEmpty)! || (emailTextField?.text?.isEmpty)!  {
+          alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
+            self.present(alert, animated: true, completion: nil)
+            } else {
+               if let password = passwordTextField?.text, let email = emailTextField?.text {
+                    Auth.auth().signIn(withEmail: email, password: password) {
+                        [weak self] authResult, error in
+                        if let e = error {
+                            print(e)
+                           alert = self!.headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
+                             self?.present(alert, animated: true, completion: nil)
+                        }else {
+                           libraryVc.currentUser = authResult?.user.email ?? ""
+                           self?.present(libraryVc, animated: true, completion: nil)
+                        }
+                    }
+               }
    }
+}
    
    
    func didFailWithError(error: Error) {
@@ -169,8 +179,15 @@ extension ViewController: BookManagerDelegate{
       }
       
    }
+   func splashview() {
+      view.addSubview(splash)
+      
+      splash.addAnchors(left: -30, top: 180, right: 0, bottom: 0)
+   }
+
 
 }
+   
 
 
 

@@ -14,9 +14,8 @@ class LibraryViewController: UIViewController {
 //    var houseManager = HouseManager()
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
-    var userController = userDB()
     var currentUserLabel: UILabel?
-    var currentUser: nuevoUsuario?
+    lazy var currentUser: String = ""
     var holaLabel: UILabel?
     var morePopular: UILabel?
     var stackView: UIStackView?
@@ -46,7 +45,7 @@ class LibraryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentUser = userController.currentUserGetter()
+//        currentUser = userController.currentUserGetter()
        hpManager.delegatehp = self
 //       houseManager.delegatehouse = self
 //       houseManager.fetchApiHP()
@@ -79,9 +78,9 @@ class LibraryViewController: UIViewController {
         holaLabel?.addAnchors(left: width/4, top: -25, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         
         
-        currentUserLabel = headerInit.uiLabelSetter(labelString: (currentUser?.usuario)!, labelSize: 30, textaligment: .center, isBold: true, isHighLighted: true)
+        currentUserLabel = headerInit.uiLabelSetter(labelString: (currentUser), labelSize: 25, textaligment: .center, isBold: true, isHighLighted: true)
         view.addSubview(currentUserLabel!)
-        currentUserLabel?.addAnchors(left: width/4, top: -8, right: width/4, bottom: nil, withAnchor: .top, relativeToView: holaLabel)
+        currentUserLabel?.addAnchors(left: width/8, top: -8, right: width/8, bottom: nil, withAnchor: .top, relativeToView: holaLabel)
         
         
         //MARK: back text button
