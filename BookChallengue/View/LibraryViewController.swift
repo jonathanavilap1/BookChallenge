@@ -15,7 +15,7 @@ class LibraryViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var currentUserLabel: UILabel?
-    lazy var currentUser: String = ""
+   var currentUser: String = ""
     var holaLabel: UILabel?
     var morePopular: UILabel?
     var stackView: UIStackView?
@@ -348,7 +348,6 @@ extension LibraryViewController: HPManagerDelegate{
 //      }
 //   }
 //
-
    
 
 //}

@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  BookChallengue
-//
-//  Created by Jonathan Avila on 22/01/22.
-//
-
 import UIKit
 import Firebase
 
@@ -25,22 +18,15 @@ class ViewController: UIViewController{
     var height = UIScreen.main.bounds.height
     var bookApi = BookManager()
     var bookModelfetch: BookArray?
-    let splash = CupheadView()
-    var timer = Timer()
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        splashview()
-        bookApi.fetchApi()
-//        sleep(4)
-       DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-          self.splash.removeFromSuperview()
-          self.view.backgroundColor = .white
-          self.bookApi.delegate = self
-          self.uiInit()
-       }
-
+        view.backgroundColor = .white
+        bookApi.delegate = self
+       bookApi.fetchApi()
+        uiInit()
         // Do any additional setup after loading the view.
     }
     
@@ -113,7 +99,6 @@ class ViewController: UIViewController{
 
 
 // setting delegate actions for UITEXTFIELD
-
 extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -179,19 +164,5 @@ extension ViewController: BookManagerDelegate{
       }
       
    }
-   func splashview() {
-      view.addSubview(splash)
-      
-      splash.addAnchors(left: -30, top: 180, right: 0, bottom: 0)
-   }
-
 
 }
-   
-
-
-
-
-
-
-

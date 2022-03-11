@@ -22,9 +22,14 @@ class RegisterViewController: UIViewController {
    var width = UIScreen.main.bounds.width
    var height = UIScreen.main.bounds.height
    let dataBase = Firestore.firestore()
+ 
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      // dismiss view
+      let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+      view.addGestureRecognizer(tap)
+      // initialize main view
       uiInit()
       view.backgroundColor = .white
       // Do any additional setup after loading the view.
@@ -35,6 +40,8 @@ class RegisterViewController: UIViewController {
    }
    
    func uiInit(){
+      //MARK: Dismiss keyboard when touch anywhere on screen
+      
       //MARK: Header
       headerImage = headerInit.uiImageViewSetter(uiImageName: "headerimage")
       view.addSubview(headerImage!)
@@ -159,17 +166,17 @@ extension RegisterViewController: UITextFieldDelegate {
             
          }
          
-         
-         let user = self.userTextField!.text
-         let email = self.emailTextField!.text
-         
-         self.dataBase.collection("UserInfo").addDocument(data: ["UserName": user! , "Email": email!]) { (error) in
-            if let e = error {
-               print("There was a issue saving data to firestore, \(e)")
-            } else {
-               print("Successfully saved data.")
-            }
-         }
+//         
+//         let user = self.userTextField!.text
+//         let email = self.emailTextField!.text
+//         
+//         self.dataBase.collection("UserInfo").addDocument(data: ["UserName": user! , "Email": email!]) { (error) in
+//            if let e = error {
+//               print("There was a issue saving data to firestore, \(e)")
+//            } else {
+//               print("Successfully saved data.")
+//            }
+//         }
          
          
          let alert = headerInit.alertViewSetter(tittle: "Registration completed", message: "Thank you for joining", buttontittle: "")
@@ -189,5 +196,11 @@ extension String {
       
       let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
       return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+   }
+}
+
+extension RegisterViewController{
+   @objc func dismissKeyboard() {
+       view.endEditing(true)
    }
 }
