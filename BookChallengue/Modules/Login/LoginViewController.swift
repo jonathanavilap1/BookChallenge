@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController{
+class LoginViewController: UIViewController{
     
     var headerInit = initializerUI()
     var headerImage: UIImageView?
@@ -16,7 +16,6 @@ class ViewController: UIViewController{
     var registerButton: UIButton?
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
-    var bookApi = BookManager()
     var bookModelfetch: BookArray?
 
     
@@ -24,8 +23,6 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        bookApi.delegate = self
-       bookApi.fetchApi()
         uiInit()
         // Do any additional setup after loading the view.
     }
@@ -99,7 +96,7 @@ class ViewController: UIViewController{
 
 
 // setting delegate actions for UITEXTFIELD
-extension ViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         passwordTextField!.endEditing(true)
@@ -122,7 +119,7 @@ extension ViewController: UITextFieldDelegate {
     
 }
 
-extension ViewController: BookManagerDelegate{
+extension LoginViewController: BookManagerDelegate{
    
 
    
