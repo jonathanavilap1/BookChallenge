@@ -117,6 +117,7 @@
 		AC2C0FCA27DAB37A0089B780 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F619173E27DBEF1100D8B4E3 /* Characters */,
 				F619173D27DBDA4600D8B4E3 /* Book */,
 				F619173827DBD99B00D8B4E3 /* Library */,
 				AC5CBFC527DACE0800B5AE8C /* SplashScreen */,
@@ -208,7 +209,6 @@
 			children = (
 				AC2C0FCA27DAB37A0089B780 /* Modules */,
 				AC2C0FC927DAB3630089B780 /* Delegates */,
-				ACCCD7F6279C88D1007F4379 /* View */,
 				ACCCD7F4279C88C0007F4379 /* Model */,
 				ACCCD7F3279C85F0007F4379 /* Utilities */,
 				ACCCD7DF279C8199007F4379 /* Main.storyboard */,
@@ -232,37 +232,18 @@
 		ACCCD7F4279C88C0007F4379 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ACECC257279F3AAC007F16C2 /* Books.swift */,
-				AC4AC38327AA2A4A0014542C /* BookManager.swift */,
-				ACFA37E927B17E6B00177CA3 /* HPManager.swift */,
 				ACFA37EF27B3447200177CA3 /* HouseManager.swift */,
 				AC9E772F27B0D8AF00B7C408 /* houseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		ACCCD7F6279C88D1007F4379 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ACECC2CB27A05103007F16C2 /* SubViewa */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ACECC2CB27A05103007F16C2 /* SubViewa */ = {
-			isa = PBXGroup;
-			children = (
-				ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */,
-				ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */,
-				ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */,
-				AC9E772327B0AF2700B7C408 /* author.swift */,
-			);
-			path = SubViewa;
-			sourceTree = "<group>";
-		};
 		F619173827DBD99B00D8B4E3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				AC9E772327B0AF2700B7C408 /* author.swift */,
+				ACECC2CC27A0513D007F16C2 /* LibraryCollectionCell.swift */,
+				ACECC2D027A081D5007F16C2 /* CategoriasCell.swift */,
 				ACECC2C2279F86EE007F16C2 /* LibraryViewController.swift */,
 				F619173C27DBD9D800D8B4E3 /* Controller */,
 				F619173B27DBD9C400D8B4E3 /* ViewModel */,
@@ -289,11 +270,22 @@
 		F619173D27DBDA4600D8B4E3 /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				AC9E772727B0D32F00B7C408 /* CharactersModel.swift */,
-				AC9E772B27B0D7CB00B7C408 /* CharacterData.swift */,
+				ACECC257279F3AAC007F16C2 /* Books.swift */,
+				AC4AC38327AA2A4A0014542C /* BookManager.swift */,
 				ACECC2C9279FAD49007F16C2 /* BookViewController.swift */,
 			);
 			path = Book;
+			sourceTree = "<group>";
+		};
+		F619173E27DBEF1100D8B4E3 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				ACFA37E927B17E6B00177CA3 /* HPManager.swift */,
+				ACFA37EB27B19F3C00177CA3 /* charactersCell.swift */,
+				AC9E772727B0D32F00B7C408 /* CharactersModel.swift */,
+				AC9E772B27B0D7CB00B7C408 /* CharacterData.swift */,
+			);
+			path = Characters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

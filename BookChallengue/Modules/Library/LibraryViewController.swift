@@ -1,5 +1,5 @@
 import UIKit
-
+import Firebase
 
 class LibraryViewController: UIViewController {
     var headerInit = initializerUI()
@@ -26,6 +26,9 @@ class LibraryViewController: UIViewController {
     var dataSource3: houseMode?
     var realDataSource: Int?
     var numberofsection: Int?
+    let defaults = UserDefaults.standard
+ 
+    
 
     
     var LibraryCollectionView : UICollectionView
@@ -46,10 +49,10 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        currentUser = userController.currentUserGetter()
-       hpManager.delegatehp = self
+       
 //       houseManager.delegatehouse = self
 //       houseManager.fetchApiHP()
-       hpManager.fetchApiHP()
+       
         uiInit()
         view.backgroundColor = .white
         
@@ -70,7 +73,7 @@ class LibraryViewController: UIViewController {
         backButton = UIButton()
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
         view.addSubview(backButton!)
-        backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 7, top: -130, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
+        backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 0, top: -130, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backButton?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         //MARK: CurrentUserLabel
         holaLabel = headerInit.uiLabelSetter(labelString: ("Hola"), labelSize: 25, textaligment: .center, isBold: true, isHighLighted: false)
@@ -84,10 +87,10 @@ class LibraryViewController: UIViewController {
         
         
         //MARK: back text button
-        backLabel = headerInit.uiButtonSetter(uiButtonNmae: "Back", textAligments: .left, cornerRadius: 0, isBackgroundClear: true, isUnderlined: false)
+        backLabel = headerInit.uiButtonSetter(uiButtonNmae: "LogOut", textAligments: .left, cornerRadius: 0, isBackgroundClear: true, isUnderlined: false)
         view.addSubview(backLabel!)
         backLabel?.addAnchors(left: nil, top: -133, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
-        backLabel?.addAnchors(left: -7, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
+        backLabel?.addAnchors(left: -13, top: nil,      right: nil, bottom: nil, withAnchor: .left, relativeToView: backButton)
         backLabel?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         morePopular = headerInit.uiLabelSetter(labelString: ("Most Popular"), labelSize: 20, textaligment: .center, isBold: true, isHighLighted: false)
@@ -316,26 +319,37 @@ extension LibraryViewController{
       self.tableView?.reloadData()
    }
    @objc  func dismissView(){
-       dismiss(animated: true, completion: nil)
+       
+       self.dismiss(animated: true, completion: {
+           let loginVC = ViewController()
+           self.defaults.removeObject(forKey: "loggedin")
+           
+           let firebaseAuth = Auth.auth()
+       do {
+         try firebaseAuth.signOut()
+       } catch let signOutError as NSError {
+         print("Error signing out: %@", signOutError)
+       }
+           loginVC.viewDidLoad()
+
+       })
+       
+       
    }
 }
 
 
-extension LibraryViewController: HPManagerDelegate{
-   func didUpdateHP(_ hpManager: HPManager, hpModel: characterArray) {
-      DispatchQueue.main.sync {
-         dataSource2 = hpModel
-         
-
-      }
-   }
-   
-   func didFailWithErrorHP(error: Error) {
-      print(error)
-   }
-   
-
-}
+//extension LibraryViewController: HPManagerDelegate{
+//   func didUpdateHP(_ hpManager: HPManager, hpModel: characterArray) {
+//
+//   }
+//   
+//   func didFailWithErrorHP(error: Error) {
+//      print(error)
+//   }
+//   
+//
+//}
 
 //extension LibraryViewController: HouseManagerDelegate{
 //   func didFailWithErrorHouse(error: Error) {

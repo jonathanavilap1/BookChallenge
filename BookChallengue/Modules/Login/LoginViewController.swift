@@ -16,7 +16,9 @@ class LoginViewController: UIViewController{
     var registerButton: UIButton?
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
+    var dataSource2: characterArray?
     var bookModelfetch: BookArray?
+    let defaults = UserDefaults.standard
 
     
     
@@ -128,6 +130,7 @@ extension LoginViewController{
        let libraryVc = LibraryViewController()
        libraryVc.modalPresentationStyle = .fullScreen
       libraryVc.dataSource = bookModelfetch
+       libraryVc.dataSource2 = dataSource2
       if (passwordTextField?.text?.isEmpty)! || (emailTextField?.text?.isEmpty)!  {
           alert = headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
             self.present(alert, animated: true, completion: nil)
@@ -140,6 +143,7 @@ extension LoginViewController{
                            alert = self!.headerInit.alertViewSetter(tittle: "Invalid Info", message: "Please verify input information", buttontittle: "ok")
                              self?.present(alert, animated: true, completion: nil)
                         }else {
+                            self?.defaults.set(authResult?.user.email, forKey: "loggedin")
                            libraryVc.currentUser = authResult?.user.email ?? ""
                            self?.present(libraryVc, animated: true, completion: nil)
                         }
