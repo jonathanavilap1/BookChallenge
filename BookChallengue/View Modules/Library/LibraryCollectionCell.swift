@@ -9,36 +9,36 @@ import Foundation
 import UIKit
 var headerInit = initializerUI()
 class LibraryCollectionCell : UICollectionViewCell{
-    
-    var imageProduct : UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .clear
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        self.backgroundColor = .clear
-        
-        
-        
-        self.addSubview(imageProduct)
-        imageProduct.addAnchors(left: 10, top: 10, right: 10, bottom: 30)
-        
-        
-    }
-    
-    func setData(libro : BookModel){
-       imageProduct.image = UIImage(data: libro.imageWithData!)
-        
-    }
-    
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+   
+   var imageProduct : UIImageView = {
+      let image = UIImageView()
+      image.backgroundColor = .clear
+      image.contentMode = .scaleAspectFit
+      return image
+   }()
+   
+   
+   override init(frame: CGRect) {
+      super.init(frame: .zero)
+      self.backgroundColor = .clear
+      
+      
+      
+      self.addSubview(imageProduct)
+      imageProduct.addAnchors(left: 10, top: 10, right: 10, bottom: 30)
+      
+      
+   }
+   
+   func setData(libro : BookModel){
+      imageProduct.image = UIImage(data: libro.imageWithData!)
+      
+   }
+   
+   
+   
+   required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+   }
+   
 }
