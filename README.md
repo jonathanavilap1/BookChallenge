@@ -3,10 +3,10 @@
 Book Challenge is an application based on Bookemia application with UI/UX flow made by me, Jonathan Avila, and with some extra features made to accomplish Challenge 4
 
 ## API Used on the api proyect
-- Google Book API -
+- Google Book API  to fetch book information and covers -
 https://developers.google.com/books
 
-- Harry Potter Public API -
+- Harry Potter Public API to fetch harry pottter fan and movie information -
 https://hp-api.herokuapp.com/
 
 ## Cocoa pods used
