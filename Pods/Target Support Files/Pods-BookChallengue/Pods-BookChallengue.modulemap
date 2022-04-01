@@ -1,0 +1,6 @@
+framework module Pods_BookChallengue {
+  umbrella header "Pods-BookChallengue-umbrella.h"
+
+  export *
+  module * { export * }
+}
