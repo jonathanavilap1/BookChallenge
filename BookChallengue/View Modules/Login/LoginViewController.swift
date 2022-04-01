@@ -159,15 +159,6 @@ extension LoginViewController{
       print(error)
    }
    
-   //   func didUpdateBook(_ bookManager: BookManager, bookModel: BookArray) {
-   //      DispatchQueue.main.sync {
-   //
-   //         bookModelfetch = bookModel
-   //
-   //      }
-   
-   //   }
-   
    @objc func dismissKeyboard() {
       //Causes the view (or one of its embedded text fields) to resign the first responder status.
       view.endEditing(true)

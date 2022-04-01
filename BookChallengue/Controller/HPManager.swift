@@ -12,15 +12,15 @@ protocol HPManagerDelegate{
 }
 
 struct HPManager{
-
+   
    
    var  hpModel: HpModel?
    var delegatehp:HPManagerDelegate?
    var urlApi = "http://hp-api.herokuapp.com/api/characters"
    var urlApiHouses = "http://hp-api.herokuapp.com/api/characters"
    let defaultImageUrl = "https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg"
-    func fetchApiHP(){
-       perfomRequestHP(urlString: urlApi)
+   func fetchApiHP(){
+      perfomRequestHP(urlString: urlApi)
    }
    
    func perfomRequestHP(urlString: String){
@@ -33,41 +33,41 @@ struct HPManager{
             if let safedata = data{
                if let dataSecure = self.parseJson(hpDatareceived: safedata) {
                   self.delegatehp?.didUpdateHP(self, hpModel: dataSecure)
-
+                  
                }
                
             }
-            }
+         }
          
          task.resume()
-      
+         
+      }
    }
-}
    func parseJson(hpDatareceived: Data) -> characterArray?{
       let decoder = JSONDecoder()
       var hpArray = characterArray(chArray: [])
       var hpCharacter: HpModel
       do{
          
-        let decodedData = try decoder.decode([WelcomeElement].self, from: hpDatareceived)
+         let decodedData = try decoder.decode([WelcomeElement].self, from: hpDatareceived)
          for i in 0...10{
-         let name = decodedData[i].name
-         let gender = decodedData[i].gender
-         let house = decodedData[i].house
-         let wizard = decodedData[i].wizard
-         let patronus = decodedData[i].patronus
-         let actor = decodedData[i].actor
-         let alive = decodedData[i].alive
-         let imageUrl = decodedData[i].image ?? defaultImageUrl
-         let url = URL(string: imageUrl) ?? URL(string: defaultImageUrl)
-         var image = Data()
+            let name = decodedData[i].name
+            let gender = decodedData[i].gender
+            let house = decodedData[i].house
+            let wizard = decodedData[i].wizard
+            let patronus = decodedData[i].patronus
+            let actor = decodedData[i].actor
+            let alive = decodedData[i].alive
+            let imageUrl = decodedData[i].image ?? defaultImageUrl
+            let url = URL(string: imageUrl) ?? URL(string: defaultImageUrl)
+            var image = Data()
             if let data = try? Data(contentsOf: url!) {
                image = data
                print(data)
             }
-           
-         
-         hpCharacter = HpModel(name: name, gender: gender, house: house, wizard: wizard, patronus: patronus, actor: actor, alive: alive, image: image)
+            
+            
+            hpCharacter = HpModel(name: name, gender: gender, house: house, wizard: wizard, patronus: patronus, actor: actor, alive: alive, image: image)
             hpArray.chArray.append(hpCharacter)
          }
          return hpArray
@@ -79,7 +79,7 @@ struct HPManager{
       
    }
    
-
+   
    
    
 }
