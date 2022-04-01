@@ -48,10 +48,6 @@ class LibraryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        currentUser = userController.currentUserGetter()
-       
-//       houseManager.delegatehouse = self
-//       houseManager.fetchApiHP()
        
         uiInit()
         view.backgroundColor = .white
@@ -76,7 +72,7 @@ class LibraryViewController: UIViewController {
         backButton?.addAnchorsAndSize(width: width/10, height: height/30,left: 0, top: -130, right: nil, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         backButton?.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         //MARK: CurrentUserLabel
-        holaLabel = headerInit.uiLabelSetter(labelString: ("Hola"), labelSize: 25, textaligment: .center, isBold: true, isHighLighted: false)
+        holaLabel = headerInit.uiLabelSetter(labelString: ("Hello"), labelSize: 25, textaligment: .center, isBold: true, isHighLighted: false)
         view.addSubview(holaLabel!)
         holaLabel?.addAnchors(left: width/4, top: -25, right: width/4, bottom: nil, withAnchor: .top, relativeToView: headerImage)
         
@@ -108,34 +104,24 @@ class LibraryViewController: UIViewController {
         
         //MARK: STACKVIEW
         
-        stackb1 = headerInit.uiButtonSetter(uiButtonNmae: "Libros", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
+        stackb1 = headerInit.uiButtonSetter(uiButtonNmae: "           Books", textAligments: .right, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb1?.addTarget(self, action: #selector(stackb1Action), for: .touchUpInside)
         stackb1?.setTitleColor(.white, for: .normal)
         
-        stackb2 = headerInit.uiButtonSetter(uiButtonNmae: "Characters", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
+        stackb2 = headerInit.uiButtonSetter(uiButtonNmae: "Characters     ", textAligments: .left, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
         stackb2?.addTarget(self, action: #selector(stackb2Action), for: .touchUpInside)
         stackb2?.setTitleColor(.white, for: .normal)
         
-        stackb3 = headerInit.uiButtonSetter(uiButtonNmae: "Houses", textAligments: .center, cornerRadius: 0.10, isBackgroundClear: true, isUnderlined: false)
-        stackb3?.addTarget(self, action: #selector(stackb3Action), for: .touchUpInside)
-        stackb3?.setTitleColor(.white, for: .normal)
         stackView = headerInit.stackViewSetter()
         stackView?.addArrangedSubview(stackb1!)
         
         let separator1 = UIView()
         separator1.widthAnchor.constraint(equalToConstant: 1).isActive = true
-        separator1.backgroundColor = .black
+        separator1.backgroundColor = .white
         stackView?.addArrangedSubview(separator1)
         separator1.heightAnchor.constraint(equalTo: stackView!.heightAnchor, multiplier: 0.6).isActive = true
         
         stackView?.addArrangedSubview(stackb2!)
-        let separator2 = UIView()
-        separator2.widthAnchor.constraint(equalToConstant: 1).isActive = true
-        separator2.backgroundColor = .black
-        stackView?.addArrangedSubview(separator2)
-        separator2.heightAnchor.constraint(equalTo: stackView!.heightAnchor, multiplier: 0.6).isActive = true
-        
-        stackView?.addArrangedSubview(stackb3!)
         
         
         view.addSubview(stackView!)
@@ -174,10 +160,6 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
        case 2:
           let libro = dataSource2?.chArray[indexPath.row]
            cell = charactersCell(libro: libro!)
-          
-//       case 3:
-////          let libro = dataSource3?.houses[indexPath.section].
-////           cell = CategoriasCell(libro: libro!)
    
       default:
           let libro = dataSource?.bookArray[indexPath.row]
@@ -197,21 +179,16 @@ extension LibraryViewController: UITableViewDataSource,UITableViewDelegate{
        let view = UIView()
        switch realDataSource {
        case 1:
-          let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
+          let header = headerInit.uiLabelSetter(labelString: "Recent Added", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
           header.backgroundColor = .white
           view.addSubview(header)
           header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
        case 2:
           print("case2")
-//       case 3:
-//          let label = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 20))
-//          label.text = dataSource3?.houses[section].
-//          label.font = .boldSystemFont(ofSize: 20)
-//          view.addSubview(label)
    
       default:
           
-          let header = headerInit.uiLabelSetter(labelString: "Recien Agregados", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
+          let header = headerInit.uiLabelSetter(labelString: "Recent Added", labelSize: 15, textaligment: .left, isBold: true, isHighLighted: true)
           header.backgroundColor = .white
           view.addSubview(header)
           header.addAnchors(left: 0, top: 0, right: nil, bottom: nil)
@@ -279,7 +256,6 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
        return CGSize(width: width / 2 - 40, height: height / 4)
-       //  return ((indexPath.item % 2) != 0) ? CGSize(width: width / 2 - 40, height: height / 4) : CGSize(width: width / 2 - 40, height: height / 5)
    }
 
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -337,31 +313,3 @@ extension LibraryViewController{
        
    }
 }
-
-
-//extension LibraryViewController: HPManagerDelegate{
-//   func didUpdateHP(_ hpManager: HPManager, hpModel: characterArray) {
-//
-//   }
-//   
-//   func didFailWithErrorHP(error: Error) {
-//      print(error)
-//   }
-//   
-//
-//}
-
-//extension LibraryViewController: HouseManagerDelegate{
-//   func didFailWithErrorHouse(error: Error) {
-//      print(error)
-//   }
-//
-//   func didUpdateHPHouse(_ hpManager: HouseManager, hpModel: houseMode) {
-//      DispatchQueue.main.sync {
-//         dataSource3 = hpModel
-//      }
-//   }
-//
-   
-
-//}

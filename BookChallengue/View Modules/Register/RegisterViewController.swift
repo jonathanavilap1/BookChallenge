@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController {
    var width = UIScreen.main.bounds.width
    var height = UIScreen.main.bounds.height
    let dataBase = Firestore.firestore()
- 
+   
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -118,7 +118,7 @@ class RegisterViewController: UIViewController {
       passwordTextField2!.delegate = self
       
       
-      singInButton = headerInit.uiButtonSetter(uiButtonNmae: "Crear Cuenta", textAligments: .center, cornerRadius: 15, isBackgroundClear: false, isUnderlined: false)
+      singInButton = headerInit.uiButtonSetter(uiButtonNmae: "Create Account", textAligments: .center, cornerRadius: 15, isBackgroundClear: false, isUnderlined: false)
       view.addSubview(singInButton!)
       singInButton?.addAnchors(left: 40, top: 20, right: 40, bottom: nil, withAnchor: .top, relativeToView: formView)
       singInButton?.addTarget(self, action: #selector(Registration), for: .touchUpInside)
@@ -166,17 +166,17 @@ extension RegisterViewController: UITextFieldDelegate {
             
          }
          
-//         
-//         let user = self.userTextField!.text
-//         let email = self.emailTextField!.text
-//         
-//         self.dataBase.collection("UserInfo").addDocument(data: ["UserName": user! , "Email": email!]) { (error) in
-//            if let e = error {
-//               print("There was a issue saving data to firestore, \(e)")
-//            } else {
-//               print("Successfully saved data.")
-//            }
-//         }
+         //
+         //         let user = self.userTextField!.text
+         //         let email = self.emailTextField!.text
+         //
+         //         self.dataBase.collection("UserInfo").addDocument(data: ["UserName": user! , "Email": email!]) { (error) in
+         //            if let e = error {
+         //               print("There was a issue saving data to firestore, \(e)")
+         //            } else {
+         //               print("Successfully saved data.")
+         //            }
+         //         }
          
          
          let alert = headerInit.alertViewSetter(tittle: "Registration completed", message: "Thank you for joining", buttontittle: "")
@@ -201,6 +201,6 @@ extension String {
 
 extension RegisterViewController{
    @objc func dismissKeyboard() {
-       view.endEditing(true)
+      view.endEditing(true)
    }
 }

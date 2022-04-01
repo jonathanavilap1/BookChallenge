@@ -13,7 +13,7 @@ protocol BookManagerDelegate{
 
 struct BookManager{
    
-   let urlBooks = "https://www.googleapis.com/books/v1/volumes?q=HarryPotter&key=AIzaSyA4deYcEJce0HvvE9t09WfMTERNHO_NPak&startIndex=0&maxResults=10&printType=books"
+   let urlBooks = "https://www.googleapis.com/books/v1/volumes?q=HarryPotter&key=AIzaSyA4deYcEJce0HvvE9t09WfMTERNHO_NPak&startIndex=0&maxResults=10&printType=books&langRestrict=en"
    let defaultImageUrl = "https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg"
    var bookModel: BookModel?
    var delegate: BookManagerDelegate?

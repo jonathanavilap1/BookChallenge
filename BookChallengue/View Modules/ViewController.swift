@@ -21,7 +21,7 @@ class ViewController: UIViewController, BookManagerDelegate , HPManagerDelegate{
         loginVC.dismiss(animated: true, completion: nil)
         LibraryVC.dismiss(animated: true, completion: nil)
         splashview()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             
             if self.defaults.object(forKey: "loggedin") == nil {
                 self.loginVC.modalPresentationStyle = .fullScreen
@@ -65,7 +65,7 @@ extension ViewController: UITextFieldDelegate {
        let splashscreen = UIImage.gif(name: "splashScreen")
         imageView = UIImageView(image: splashscreen)
        view.addSubview(imageView)
-       imageView.addAnchorsAndSize(width: 160, height: 160, left: 120, top: nil, right: nil, bottom: -80,withAnchor: .bottom, relativeToView: imageView2 )
+       imageView.addAnchorsAndSize(width: 190, height: 160, left: 100, top: nil, right: nil, bottom: -80,withAnchor: .bottom, relativeToView: imageView2 )
 
 //      view.addSubview(splash)
 //
