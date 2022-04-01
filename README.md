@@ -2,6 +2,20 @@
 
 Book Challenge is an application based on Bookemia application with UI/UX flow made by me, Jonathan Avila, and with some extra features made to accomplish Challenge 4
 
+## API Used on the api proyect
+- Google Book API -
+https://developers.google.com/books
+
+- Harry Potter Public API -
+https://hp-api.herokuapp.com/
+
+## Cocoa pods used
+- Fire Base for handling sing in and sing up -
+https://firebase.google.com/
+
+- IQKeyboardManager for handling obstruction of keyboard above textfields -
+https://cocoapods.org/pods/IQKeyboardManager
+
 ## Installation
 
 Book Challengue is made with swift language and uses cocoa pods, please install cocoa pods in order to execute the application.  
